@@ -13,7 +13,7 @@ const Pokemon = (props) => {
 
   useEffect(() => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+      .get(`https://pokeapi.co/api/v2/pokemon/pokemon-testing/${pokemonId}`)
       .then(function (response) {
         const { data } = response;
         console.log(response);
