@@ -7,7 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 const App = () => {
   return (
     <Switch>
-      <Route exact path='/' component={Pokedex} />
+      <Route exact path='/pokedex-testing' component={Pokedex} />
       {/* <Route exact path='/regions' component={RegionList} /> */}
       <Route exact path='/:pokemonId' render={(props) => <Pokemon {...props} />} />
     </Switch>
