@@ -100,7 +100,7 @@ const Pokedex = (props) => {
 
     return (
       <Grid item xs={12} sm={4} key={pokemonId}>
-        <Card className={classes.pokemonCard} onClick={() => history.push(`/${id}`)}>
+        <Card className={classes.pokemonCard} onClick={() => history.push(`/pokedex-testing/${id}`)}>
           <CardMedia
             className={classes.cardMedia}
             image={sprite}

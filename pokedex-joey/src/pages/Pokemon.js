@@ -13,7 +13,7 @@ const Pokemon = (props) => {
 
   useEffect(() => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/pokemon-testing/${pokemonId}`)
+      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
       .then(function (response) {
         const { data } = response;
         console.log(response);
@@ -109,7 +109,7 @@ const Pokemon = (props) => {
             justifyItems: "center",
           }}
           variant="contained"
-          onClick={() => history.push("/")}
+          onClick={() => history.push("/pokedex-testing/")}
         >
           Back to Pokedex
         </Button>
