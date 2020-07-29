@@ -52,7 +52,7 @@ const Pokedex = (props) => {
   const [filter, setFilter] = useState('');
 
   const handleChange = (event) => {
-    setFilter(event.target.value);
+    setFilter(event.target.value.toLowerCase());
   };
 
   // const next = async () => {
@@ -126,7 +126,7 @@ const Pokedex = (props) => {
             />
           </div>
           <div >
-            <Typography >PokemonApp</Typography>
+            <Typography >Pokemon App</Typography>
           </div>
         </Toolbar>
       </AppBar>

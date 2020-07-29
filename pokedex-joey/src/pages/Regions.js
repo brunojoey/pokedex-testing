@@ -14,7 +14,7 @@ function RegionList (props) {
           .then(function (response) {
             console.log('response', response)
             const { data } = response;
-            const { results } = data
+            const { results } = data;
             console.log('results', results)
             const newRegionData = {};
             results.forEach((data, index) => {
@@ -30,11 +30,11 @@ function RegionList (props) {
       const getRegion = (regionId) => {
         const { id, main_region, pokemon_species } = regionData[regionId];
     
-        // return (
-        //     <>
-        //         {}
-        //     </>
-        // )
+        return (
+            <>
+                {}
+            </>
+        )
       };
     
     

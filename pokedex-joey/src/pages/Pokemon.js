@@ -41,12 +41,18 @@ const Pokemon = (props) => {
 
     return (
       <>
-        <Typography variant="h3" className="pokemonHeader">
+        <Typography
+          variant="h3"
+          className="pokemonHeader"
+          style={{
+            borderTop: '1em solid #DCDCDC'
+          }}
+        >
           {`${id}.`} {toFirstCharUppercase(name)}
         </Typography>
         <div className="pokemonImage">
-          <img style={{ width: "40em", height: "10em" }} src={front_default} />
-          <img style={{ width: "40em", height: "10em" }} src={front_shiny} />
+          <img style={{ width: "30em", height: "10em" }} src={front_default} />
+          <img style={{ width: "30em", height: "10em" }} src={front_shiny} />
         </div>
         <div className="pokemonInfoDiv">
           <Typography variant="h3">Pokemon Info</Typography>
@@ -69,7 +75,10 @@ const Pokemon = (props) => {
                   href={type.url}
                   key={name}
                   className="cardType"
-                  style={{ backgroundColor: typeColors[type.name], color: 'white' }}
+                  style={{
+                    backgroundColor: typeColors[type.name],
+                    color: "white",
+                  }}
                 >
                   {toFirstCharUppercase(`${name}`)}
                 </Link>
@@ -80,7 +89,7 @@ const Pokemon = (props) => {
             Locations:{" "}
             <Link
               href={location_area_encounters}
-            >{`${location_area_encounters}`}</Link>{" "}
+            >{`${location_area_encounters}`}</Link>
           </h3>
         </div>
       </>
