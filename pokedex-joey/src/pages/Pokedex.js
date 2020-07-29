@@ -120,7 +120,7 @@ const Pokedex = (props) => {
         <Toolbar className={classes.pokemonHeader} style={{ backgroundColor: "#FF4236"}}>
           <div className={classes.searchContainer}>
             <TextField
-              label="Pokemon"
+              label="Search Pokemon"
               variant="standard"
               onChange={handleChange}
             />
