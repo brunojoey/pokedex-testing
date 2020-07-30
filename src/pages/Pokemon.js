@@ -70,6 +70,8 @@ const Pokemon = (props) => {
             const { name } = type;
             console.log("NameType", type);
             return (
+              <Grid container spacing={3} style={{justifyContent: 'center', marginTop: '.1em', marginBottom: '.1em'}}>
+                <Grid item xs={8} lg={8}>
                 <Link
                   href={type.url}
                   key={name}
@@ -77,15 +79,17 @@ const Pokemon = (props) => {
                   style={{
                     backgroundColor: typeColors[type.name],
                     color: "white",
-                    // margin:  '.5em 15em 0 15em'
+                    width: "25%",
                   }}
                 >
                   {toFirstCharUppercase(`${name}`)}
                 </Link>
+                </Grid>
+              </Grid>
+
             );
           })}
-          <Typography variant="h6"> Locations:</Typography>
-          <Link href={location_area_encounters}>Link</Link>
+          <Link href={location_area_encounters}><strong>Locations</strong></Link>
         </div>
       </>
     );
@@ -112,7 +116,7 @@ const Pokemon = (props) => {
               style={{
                 backgroundColor: "#FF4236",
                 color: "#dcdcdc",
-                alignSelf: "center",
+                margin: "0 auto"
               }}
               // variant="contained"
               onClick={() => history.push("/pokedex-testing/")}
