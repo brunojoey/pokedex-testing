@@ -9,21 +9,14 @@ body {
     border: 1px solid black;
 }
 
-.MuiGrid-container {
-    display: flex;
-    align-items: center;
-}
-
   .pokemonImage {
       background-color: rgba(255, 255, 255, 0.65);
       border: 5px solid red;
       border-radius: 5em;
-      display: flex;
-      justify-content: center;
-      width: 0 auto;
-      height: 0 auto;
+      display: grid;
+      place-items: center;
       padding: 1em;
-      margin: 1em 40em 1em 40em;
+      margin: 0 auto;
   }
 
   .pokemonInfoDiv {
@@ -31,8 +24,8 @@ body {
     flex-direction: column;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.1);
-    margin: 0 30em 1em 30em;
-    border: .5em solid red;
+    margin: 0 auto;
+    border: 5px solid red;
     border-radius: 5em;
     padding: 1em;
 }
@@ -43,4 +36,14 @@ body {
       background-color: #FF4236;
       color: #DCDCDC;
       padding: .25em 0 .25em 0;
+  }
+
+  @media (max-width: 768px) {
+    .pokemonImage {
+        width: 25%;
+    }
+
+    .pokemonInfoDiv {
+        width: 25%;
+    }
   }

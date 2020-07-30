@@ -47,15 +47,15 @@ const Pokemon = (props) => {
 
     return (
       <>
-        <Typography variant="h3" className="pokemonHeader">
+        <Typography variant="h3" className="pokemonHeader" style={{marginBottom: '.5em'}}>
           {`${id}.`} {toFirstCharUppercase(name)}
         </Typography>
-        <div className="pokemonImage">
-          <img style={{ width: "30em", height: "10em" }} src={front_default} alt='default sprite'/>
-          <img style={{ width: "30em", height: "10em" }} src={front_shiny} alt='shiny sprite'/>
+        <div className="pokemonImage" style={{marginBottom: '1em', width: '50%'}}>
+          <img style={{ width: "0 auto", height: "0 auto" }} src={front_default} alt='default sprite'/>
+          <img style={{ width: "0 auto", height: "0 auto" }} src={front_shiny} alt='shiny sprite'/>
         </div>
-        <div className="pokemonInfoDiv">
-          <Typography variant="h3">Pokemon Info</Typography>
+        <div className="pokemonInfoDiv" style={{marginBottom: '1em', width: '50%'}}>
+          <Typography variant="h5" style={{textDecoration: 'underline'}}>Pokemon Info</Typography>
           <Typography className="pokemonUrl">
             {"Species: "}
             <Link href={species.url}>
