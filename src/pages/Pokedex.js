@@ -9,7 +9,7 @@ import {
   CardMedia,
   CircularProgress,
   Typography,
-  TextField,
+  TextField
 } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import { toFirstCharUppercase } from "../utils/firstChar";
@@ -46,9 +46,9 @@ const Pokedex = (props) => {
   const classes = useStyles();
   const { history } = props;
   const [pokemonData, setPokemonData] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [nextUrl, setNextUrl] = useState('');
-  const [prevUrl, setPrevUrl] = useState('');
+  // const [loading, setLoading] = useState(true);
+  // const [nextUrl, setNextUrl] = useState('');
+  // const [prevUrl, setPrevUrl] = useState('');
   const [filter, setFilter] = useState('');
 
   const handleChange = (event) => {
@@ -117,7 +117,7 @@ const Pokedex = (props) => {
   return (
     <>
       <AppBar position="static">
-        <Toolbar className={classes.pokemonHeader} style={{ backgroundColor: "#FF4236"}}>
+        <Toolbar className={classes.pokemonHeader} style={{ backgroundColor: "#FF4236", color: '#dcdcdc'}}>
           <div className={classes.searchContainer}>
             <TextField
               label="Search Pokemon"
@@ -126,7 +126,7 @@ const Pokedex = (props) => {
             />
           </div>
           <div >
-            <Typography >Pokemon App</Typography>
+            <Typography>Pokemon App</Typography>
           </div>
         </Toolbar>
       </AppBar>
@@ -139,7 +139,7 @@ const Pokedex = (props) => {
           )}
         </Grid>
       ) : (
-        <CircularProgress style={{alignContent: 'center'}}/>
+        <CircularProgress style={{placeItems: 'center'}}/>
       )}
     </>
   );

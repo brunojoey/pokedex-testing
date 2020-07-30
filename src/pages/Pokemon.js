@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Link, CircularProgress, Button } from "@material-ui/core";
+import {
+  Typography,
+  Link,
+  CircularProgress,
+  Button,
+  Grid,
+} from "@material-ui/core";
 import { toFirstCharUppercase } from "../utils/firstChar";
 import typeColors from "../utils/typeColors";
 import axios from "axios";
@@ -41,18 +47,12 @@ const Pokemon = (props) => {
 
     return (
       <>
-        <Typography
-          variant="h3"
-          className="pokemonHeader"
-          style={{
-            borderTop: '1em solid #DCDCDC'
-          }}
-        >
+        <Typography variant="h3" className="pokemonHeader">
           {`${id}.`} {toFirstCharUppercase(name)}
         </Typography>
         <div className="pokemonImage">
-          <img style={{ width: "30em", height: "10em" }} src={front_default} />
-          <img style={{ width: "30em", height: "10em" }} src={front_shiny} />
+          <img style={{ width: "30em", height: "10em" }} src={front_default} alt='default sprite'/>
+          <img style={{ width: "30em", height: "10em" }} src={front_shiny} alt='shiny sprite'/>
         </div>
         <div className="pokemonInfoDiv">
           <Typography variant="h3">Pokemon Info</Typography>
@@ -70,7 +70,6 @@ const Pokemon = (props) => {
             const { name } = type;
             console.log("NameType", type);
             return (
-              <Button>
                 <Link
                   href={type.url}
                   key={name}
@@ -78,19 +77,15 @@ const Pokemon = (props) => {
                   style={{
                     backgroundColor: typeColors[type.name],
                     color: "white",
+                    // margin:  '.5em 15em 0 15em'
                   }}
                 >
                   {toFirstCharUppercase(`${name}`)}
                 </Link>
-              </Button>
             );
           })}
-          <h3 style={{ textAlign: "center" }}>
-            Locations:{" "}
-            <Link
-              href={location_area_encounters}
-            >{`${location_area_encounters}`}</Link>
-          </h3>
+          <Typography variant="h6"> Locations:</Typography>
+          <Link href={location_area_encounters}>Link</Link>
         </div>
       </>
     );
@@ -111,17 +106,21 @@ const Pokemon = (props) => {
 
       {/* 4. Show button for going back to home page. */}
       {pokemon !== undefined && (
-        <Button
-          style={{
-            backgroundColor: "#FF4236",
-            color: "white",
-            justifyItems: "center",
-          }}
-          variant="contained"
-          onClick={() => history.push("/pokedex-testing/")}
-        >
-          Back to Pokedex
-        </Button>
+        <Grid container spacing={3}>
+          <Grid item lg={10} xs={4}>
+            <Button
+              style={{
+                backgroundColor: "#FF4236",
+                color: "#dcdcdc",
+                alignSelf: "center",
+              }}
+              // variant="contained"
+              onClick={() => history.push("/pokedex-testing/")}
+            >
+              Back to Pokedex
+            </Button>
+          </Grid>
+        </Grid>
       )}
     </>
   );

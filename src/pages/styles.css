@@ -3,15 +3,15 @@ body {
     font-family: 'Arial'
 }
 
-.goHomeButton {
-    color: #FF4236;
-    text-align: center;
-}
-
 .cardType {
     padding: .5em 1em;
     border-radius: 5px;
     border: 1px solid black;
+}
+
+.MuiGrid-container {
+    display: flex;
+    align-items: center;
 }
 
   .pokemonImage {

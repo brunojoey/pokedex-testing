@@ -3,8 +3,8 @@ import axios from 'axios';
 
 
 function RegionList (props) {
-    const [regionData, setRegionData] = useState('Kanto');
-    const { match, history } = props;
+    // const [regionData, setRegionData] = useState('Kanto');
+    // const { match, history } = props;
     const { params } = match;
     const { regionId } = params;
   
@@ -23,26 +23,26 @@ function RegionList (props) {
                 name: data.name,
               };
             });
-            setRegionData(newRegionData);
+            // setRegionData(newRegionData);
           });
       }, [regionId]);
 
-      const getRegion = (regionId) => {
-        const { id, main_region, pokemon_species } = regionData[regionId];
+      // const getRegion = (regionId) => {
+      //   const { id, main_region, pokemon_species } = regionData[regionId];
     
-        return (
-            <>
-                {}
-            </>
-        )
-      };
+      //   return (
+      //       <>
+      //           {}
+      //       </>
+      //   )
+      // };
     
     
-      return (
-          <>
+      // return (
+      //     <>
 
-          </>
-      )
+      //     </>
+      // )
 };
 
 export default RegionList;
