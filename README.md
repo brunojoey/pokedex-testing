@@ -34,4 +34,4 @@ To contribute, clone this repository into your terminal, work on the project, th
 [Deployed Pokemon Application](https://brunojoey.github.io/pokedex-testing/)
 
 ## Application in Use
-![Pokemon App In Use](/pokemonApp.jpg)
+![Pokemon App In Use](/pokemonApp.png)
