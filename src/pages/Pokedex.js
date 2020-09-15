@@ -20,16 +20,14 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "20px",
     paddingLeft: "50px",
     paddingRight: "50px",
+    marginTop: '1em',
+    width: '100%'
   },
   cardMedia: {
     margin: "auto",
   },
   cardContent: {
     textAlign: "center",
-  },
-  pokemonCard: {
-    border: '.25em solid red',
-    borderRadius: '3em'
   },
   pokemonHeader: {
     display: 'flex',
@@ -100,7 +98,7 @@ const Pokedex = (props) => {
 
     return (
       <Grid item xs={12} sm={4} key={pokemonId}>
-        <Card className={classes.pokemonCard} onClick={() => history.push(`/pokedex-testing/${id}`)}>
+        <Card className='pokemonCard' onClick={() => history.push(`/pokedex-testing/${id}`)}>
           <CardMedia
             className={classes.cardMedia}
             image={sprite}
