@@ -74,12 +74,13 @@ const Pokedex = (props) => {
 
   useEffect(() => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon?limit=807?offset=21`)
+      .get(`https://pokeapi.co/api/v2/pokemon?limit=892?offset=21`)
       .then(function (response) {
-        console.log('response', response)
         const { data } = response;
+        console.log('data', data);
         const { results } = data;
-        const newPokemonData = {};
+        console.log('results', results);
+        const newPokemonData = [];
         results.forEach((pokemon, index) => {
           newPokemonData[index + 1] = {
             id: index + 1,
@@ -95,10 +96,11 @@ const Pokedex = (props) => {
 
   const getPokemonCard = (pokemonId) => {
     const { id, name, sprite } = pokemonData[pokemonId];
+    console.log('pokemon data', pokemonData[pokemonId]);
 
     return (
       <Grid item xs={12} sm={4} key={pokemonId}>
-        <Card className='pokemonCard' onClick={() => history.push(`/pokedex-testing/${id}`)}>
+        <Card className='pokemonCard' onClick={() => history.push(`/pokedex-testing/pokemon/${id}`)}>
           <CardMedia
             className={classes.cardMedia}
             image={sprite}
@@ -123,7 +125,7 @@ const Pokedex = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div >
+          <div>
             <Typography>Pokemon App</Typography>
           </div>
         </Toolbar>

@@ -1,15 +1,17 @@
 import React from 'react';
 import Pokedex from './pages/Pokedex';
 import Pokemon from './pages/Pokemon';
-import RegionList from './pages/Regions';
+import RegionPage from './pages/Region';
+import RegionDex from './pages/RegionDex';
 import { Route, Switch } from 'react-router-dom';
 
 const App = () => {
   return (
     <Switch>
       <Route exact path='/pokedex-testing/' component={Pokedex} />
-      <Route exact path='/pokedex-testing/regions' component={RegionList} />
-      <Route exact path='/pokedex-testing/:pokemonId' render={(props) => <Pokemon {...props} />} />
+      <Route exact path='/pokedex-testing/regions' render={(props) => <RegionDex {...props} />} />
+      <Route exact path='/pokedex-testing/regions/:regionId' render={(props) => <RegionPage {...props} />} />
+      <Route exact path='/pokedex-testing/pokemon/:pokemonId' render={(props) => <Pokemon {...props} />} />
     </Switch>
   );
 };

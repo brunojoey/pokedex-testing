@@ -22,7 +22,7 @@ const Pokemon = (props) => {
       .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
       .then(function (response) {
         const { data } = response;
-        console.log(response);
+        console.log('hello', data);
         setPokemon(data);
       })
       .catch(function (error) {
@@ -110,13 +110,13 @@ const Pokemon = (props) => {
 
       {/* 4. Show button for going back to home page. */}
       {pokemon !== undefined && (
-        <Grid container spacing={3}>
+        <Grid container>
           <Grid item lg={10} xs={4}>
             <Button
               style={{
                 backgroundColor: "#FF4236",
                 color: "#dcdcdc",
-                margin: "0 auto"
+                float: 'right'
               }}
               // variant="contained"
               onClick={() => history.push("/pokedex-testing/")}
