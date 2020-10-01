@@ -95,6 +95,7 @@ const Pokedex = (props) => {
   }, []);
 
   const getPokemonCard = (pokemonId) => {
+    console.log('pokemonId', pokemonId)
     const { id, name, sprite } = pokemonData[pokemonId];
     console.log('pokemon data', pokemonData[pokemonId]);
 
