@@ -1,49 +1,49 @@
 [
   {
     "region_name": "Kanto",
-    "image": "./images/kanto.png",
+    "image": "../images/kanto.png",
     "link": "pokedex-testing/regions/1",
     "region_ID": 1
   },
   {
     "region_name": "Johto",
-    "image": "./images/johto.png",
+    "image": "../images/johto.png",
     "link": "pokedex-testing/regions/2",
     "region_ID": 2
   },
   {
     "region_name": "Hoenn",
-    "image": "./images/hoenn.jpg",
+    "image": "../images/hoenn.jpg",
     "link": "pokedex-testing/regions/3",
     "region_ID": 3
   },
   {
     "region_name": "Sinnoh",
-    "image": "./images/sinnoh.jpg",
+    "image": "../images/sinnoh.jpg",
     "link": "pokedex-testing/regions/4",
     "region_ID": 4
   },
   {
     "region_name": "Unova",
-    "image": "./images/unova.jpg",
+    "image": "../images/unova.jpg",
     "link": "pokedex-testing/regions/5",
     "region_ID": 5
   },
   {
     "region_name": "Kalos",
-    "image": "./images/kalos.jpg",
+    "image": "../images/kalos.jpg",
     "link": "pokedex-testing/regions/6",
     "region_ID": 6
   },
   {
     "region_name": "Alola",
-    "image": "./images/alola.png",
+    "image": "../images/alola.png",
     "link": "pokedex-testing/regions/7",
     "region_ID": 7
   },
   {
     "region_name": "Galar",
-    "image": "./images/galar.jpg",
+    "image": "../images/galar.jpg",
     "link": "pokedex-testing/regions/8",
     "region_ID": 8
   }

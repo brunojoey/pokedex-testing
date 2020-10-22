@@ -1,12 +1,36 @@
 body {
-    background-color: #DCDCDC;
+    background-color: #dcdcdc;
     font-family: 'Arial';
 }
+
+.regionLink {
+    color: #dcdcdc;
+    text-decoration: none;
+}
+
+.regionLink:hover {
+    text-decoration: line-through;
+}
+
+/* @keyframes moveTypeButton {
+    0% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+} */
 
 .cardType {
     padding: .5em 1em;
     border-radius: 5px;
     border: 1px solid black;
+}
+
+.cardType:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 7px 5px rgba(0, 0, 0, .2);
 }
 
 .pokemonCard {
@@ -15,7 +39,8 @@ body {
 }
 
 .pokemonCard:hover {
-    box-shadow: 5px 5px 7px grey;
+    transform: translateY(-5px);
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, .2);
 }
 
 .pokemonImage {
@@ -39,6 +64,14 @@ body {
 
 .pokemonHeader {
     display: flex;
+    justify-content: space-between;
+    background-color: #FF4236;
+    color: #DCDCDC;
+    padding: .25em 0;
+}
+
+.pokeHeader {
+    display: flex;
     justify-content: center;
     background-color: #FF4236;
     color: #DCDCDC;
@@ -55,6 +88,14 @@ body {
     position: relative;
 }
 
+.region-header {
+    background-color: #FF4236;
+    color: #DCDCDC;
+    margin: 0;
+    padding: 1em 0;
+    text-align: center;
+}
+
 .region-image {
     height: 50%;
     width: 50%;
@@ -69,7 +110,7 @@ body {
 @keyframes moveInButton {
     0% {
       opacity: 0;
-      transform: translateX(-15px); /* translateY because we want to move it in regards vertically. -30 to move from the top */
+      transform: translateX(-15px);
     }
   
     100% {
@@ -115,22 +156,10 @@ body {
     border-radius: .5em;  
 }
 
-.pokemonCard-region {
-    width: 50%;
-    border: .25em solid #FF4236;
-    border-radius: 1em;  
-}
-
-.pokemonCard-region:hover {
-    box-shadow: 5px 5px 7px grey;
-}
-
-/* .MuiCard-root {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 0;
-} */
-  
+.pokemonList-region:hover {
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, .2);
+}  
 
 @media (max-width: 768px) {
     .pokemonImage {

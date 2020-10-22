@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  AppBar,
-  Toolbar,
-  TextField,
   Typography,
   CircularProgress,
   Card,
@@ -27,53 +24,37 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
 const RegionPage = (props) => {
   const classes = useStyles();
   const [pokemonData, setPokemonData] = useState();
   const [regionData, setRegionData] = useState();
-  const [filter, setFilter] = useState('');
   const { match, history } = props;
   const { params } = match;
   const { regionId } = params;
-  
-  const handleChange = (event) => {
-    setFilter(event.target.value.toLowerCase());
-  };
-  
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://pokeapi.co/api/v2/pokedex/${regionId}`)
-  //     .then(function (response) {
-  //       const { data } = response;
-  //       console.log('hello', data);
-  //       setPokedexData(data);
-  //     })
-  //     .catch(function (error) {
-  //       console.log("ERROR", error);
-  //       setPokedexData(false);
-  //     });
-  // }, [regionId]);
 
   useEffect(() => {
     axios
       .get(`https://pokeapi.co/api/v2/generation/${regionId}/`)
       .then(function (response) {
         const { data } = response;
-        // const { main_region } = data;
-        const { pokemon_species } = data;
-        const newPokemonData = [];
-        pokemon_species.forEach((pokemon, index) => {
-          newPokemonData[index + 1] = {
-            id: index + 1,
-            name: pokemon.name,
-            sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-              index + 1
-            }.png`,
-          };
+        let pokemonListRaw = response.data.pokemon_species;
+        // add id property to the pokémon for sorting purpose
+        pokemonListRaw.forEach((element) => {
+          element.url = element.url.slice(0, -1);
+          element.id = parseInt(
+            element.url.substring(element.url.lastIndexOf("/") + 1)
+          );
+          element.sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+            element.id
+          }.png`;
+        });
+        // order pokemon based on id
+        pokemonListRaw.sort((a, b) => {
+          return a.id > b.id ? 1 : -1;
         });
         console.log("data", data);
-        setPokemonData(newPokemonData);
+        setPokemonData(pokemonListRaw);
+        console.log("pokemon data new", pokemonListRaw);
         setRegionData(data);
       })
       .catch(function (error) {
@@ -81,40 +62,45 @@ const RegionPage = (props) => {
       });
   }, [regionId]);
 
-  const getRegionCard = (pokemonId) => {
+  const getRegionCard = (regionId) => {
+    const { main_region } = regionId;
     const { id, name, sprite } = pokemonData;
     console.log("pokemonData", pokemonData);
 
     return (
       <div>
-        <h3 style={{ textAlign: "center" }}>
-          {`${toFirstCharUppercase(regionData.main_region.name)}`}'s Pokemon
-        </h3>
+        <h1 className='region-header' style={{ textAlign: "center" }}>
+          {`${toFirstCharUppercase(main_region.name)}`}'s Pokemon
+        </h1>
         <div className="regionList-container">
-          <Grid
-            container
-            spacing={3}
-            className={classes.pokedexContainer}
-            key={name}
-          >
-            <Grid className="pokemonList-region">
-              <Card
-                // className='pokemonCard-region'
-                onClick={() => history.push(`/pokedex-testing/pokemon/${id}`)}
-              >
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={sprite}
-                  style={{ width: "130px", height: "130px" }}
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography>{`${id}. ${toFirstCharUppercase(
-                    name
+          {pokemonData.map((pokemon) => (
+            <Grid
+              container
+              spacing={3}
+              className={classes.pokedexContainer}
+              key={pokemon.name}
+            >
+              <Grid className="pokemonList-region">
+                <Card
+                  className='pokemonCard-region'
+                  onClick={() =>
+                    history.push(`/pokedex-testing/pokemon/${pokemon.id}`)
+                  }
+                >
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image={pokemon.sprite}
+                    style={{ width: "130px", height: "130px" }}
+                  />
+                  <CardContent className={classes.cardContent}>
+                  <Typography>{`${pokemon.id}. ${toFirstCharUppercase(
+                    pokemon.name
                   )}`}</Typography>{" "}
                 </CardContent>
               </Card>
             </Grid>
           </Grid>
+          ))}
         </div>
       </div>
     );
@@ -122,34 +108,17 @@ const RegionPage = (props) => {
 
   return (
     <div>
-      <AppBar position="static">
-        <Toolbar
-          className={classes.pokemonHeader}
-          style={{ backgroundColor: "#FF4236", color: "#dcdcdc" }}
-        >
-          <div className={classes.searchContainer}>
-            <TextField
-              label="Search Pokemon"
-              variant="standard"
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <Typography>Pokemon App</Typography>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {pokemonData && regionData ? (
-        <Grid container spacing={2} className={classes.pokedexContainer}>
-          {Object.keys(pokemonData).map(
-            (pokemonId) =>
-              pokemonData[pokemonId].name.includes(filter) &&
-              getRegionCard(regionId)
-          )}
-        </Grid>
-      ) : (
+      {/* 1. regionData = undefined, that means we are getting the info
+        -> return loading progress */}
+      {regionData === undefined && (
         <CircularProgress style={{ placeItems: "center" }} />
       )}
+      {/* 2. regionData = good data, that means we've gotten info
+        -> return pokemon info */}
+      {regionData !== undefined && regionData && getRegionCard(regionData)}
+      {/* 3. region = bad data, that means no info has been found
+        -> return region not found */}
+      {regionData === false && <Typography> Region not found</Typography>}
     </div>
   );
 };

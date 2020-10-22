@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import RegionDex from './RegionDex';
 import axios from "axios";
 import {
   AppBar,
@@ -9,11 +10,12 @@ import {
   CardMedia,
   CircularProgress,
   Typography,
+  Link,
   TextField
 } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import { toFirstCharUppercase } from "../utils/firstChar";
-import './styles.css'
+import './styles.css';
 
 const useStyles = makeStyles((theme) => ({
   pokedexContainer: {
@@ -38,9 +40,13 @@ const useStyles = makeStyles((theme) => ({
     padding: ".5em 1em .5em 1em",
     margin: "5px 0px",
   },
+  rightSideHeader: {
+    display: 'flex'
+  }
 }));
 
 const Pokedex = (props) => {
+  console.log('props', props)
   const classes = useStyles();
   const { history } = props;
   const [pokemonData, setPokemonData] = useState({});
@@ -72,15 +78,15 @@ const Pokedex = (props) => {
   //   setLoading(false);
   // }
 
+  // Used axios to get the pokemon from the API
   useEffect(() => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon?limit=892?offset=21`)
+      .get(`https://pokeapi.co/api/v2/pokemon?limit=893?offset=21`)
       .then(function (response) {
         const { data } = response;
-        console.log('data', data);
         const { results } = data;
-        console.log('results', results);
-        const newPokemonData = [];
+        const newPokemonData = {};
+        // will push the information from the results object into newPokemonData with each id, name, and sprite for all.
         results.forEach((pokemon, index) => {
           newPokemonData[index + 1] = {
             id: index + 1,
@@ -94,17 +100,16 @@ const Pokedex = (props) => {
       });
   }, []);
 
+  // renders a card for each pokemon with their given ID, name, and sprite. When clicked, the pokemon's page will show up
   const getPokemonCard = (pokemonId) => {
-    console.log('pokemonId', pokemonId)
     const { id, name, sprite } = pokemonData[pokemonId];
-    console.log('pokemon data', pokemonData[pokemonId]);
 
     return (
       <Grid item xs={12} sm={4} key={pokemonId}>
         <Card className='pokemonCard' onClick={() => history.push(`/pokedex-testing/pokemon/${id}`)}>
           <CardMedia
             className={classes.cardMedia}
-            image={sprite}
+            image={(sprite)}
             style={{ width: "130px", height: "130px" }}
           />
           <CardContent className={classes.cardContent}>
@@ -118,7 +123,7 @@ const Pokedex = (props) => {
   return (
     <>
       <AppBar position="static">
-        <Toolbar className={classes.pokemonHeader} style={{ backgroundColor: "#FF4236", color: '#dcdcdc'}}>
+        <Toolbar className='pokemonHeader' style={{ backgroundColor: "#FF4236", color: '#dcdcdc'}}>
           <div className={classes.searchContainer}>
             <TextField
               label="Search Pokemon"
@@ -126,12 +131,15 @@ const Pokedex = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div>
-            <Typography>Pokemon App</Typography>
+          <div className={classes.rightSideHeader}>
+            <Link to={RegionDex} onClick={() => history.push('/pokedex-testing/regions/')}><Typography className='regionLink'>Regions</Typography></Link>
+            <Typography style={{ marginLeft: '1em' }}>Pokemon App</Typography>
           </div>
         </Toolbar>
       </AppBar>
       {pokemonData ? (
+      // If pokemonData exists, the Grid container will render along with all pokemon cards that are filtered in through the search bar if anything is there.
+      // If there is nothing in the search bar, it will show every pokemon in the API. 
         <Grid container spacing={2} className={classes.pokedexContainer}>
           {Object.keys(pokemonData).map(
             (pokemonId) =>
@@ -140,6 +148,7 @@ const Pokedex = (props) => {
           )}
         </Grid>
       ) : (
+        // if pokemonData doesn't exist yet, a loading circle will show in the page.
         <CircularProgress style={{placeItems: 'center'}}/>
       )}
     </>

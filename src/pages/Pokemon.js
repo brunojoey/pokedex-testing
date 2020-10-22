@@ -47,7 +47,7 @@ const Pokemon = (props) => {
 
     return (
       <>
-        <Typography variant="h3" className="pokemonHeader" style={{marginBottom: '.5em'}}>
+        <Typography variant="h3" className="pokeHeader" style={{marginBottom: '.5em'}}>
           {`${id}.`} {toFirstCharUppercase(name)}
         </Typography>
         <div className="pokemonImage" style={{marginBottom: '1em', width: '50%'}}>
@@ -71,7 +71,7 @@ const Pokemon = (props) => {
             console.log("NameType", type);
             return (
               <Grid container spacing={3} style={{justifyContent: 'center', marginTop: '.1em', marginBottom: '.1em'}}>
-                <Grid item xs={8} lg={8}>
+                <Grid item xs={8} lg={8} className='cardTypeContainer'>
                 <Link
                   href={type.url}
                   key={name}
