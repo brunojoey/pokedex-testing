@@ -11,9 +11,9 @@ const App = (props) => {
   return (
     <Switch>
       <Route exact path='/' component={Pokedex} />
-      <Route exact path='/regions' render={(props) => <RegionDex {...props} />} />
-      <Route exact path='/regions/:regionId' render={(props) => <RegionPage {...props} />} />
-      <Route exact path='/pokemon/:pokemonId' render={(props) => <Pokemon {...props}/>} />
+      <Route path='/regions' render={(props) => <RegionDex {...props} />} />
+      <Route path='/regions/:regionId' render={(props) => <RegionPage {...props} />} />
+      <Route path='/pokemon/:pokemonId' render={(props) => <Pokemon {...props}/>} />
     </Switch>
   );
 };

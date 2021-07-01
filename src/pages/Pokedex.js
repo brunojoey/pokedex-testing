@@ -134,7 +134,7 @@ const Pokedex = (props) => {
             />
           </div>
           <div className={classes.rightSideHeader}>
-            <Link to={RegionDex} onClick={() => history.push('/regions/')}><Typography className='regionLink'>Regions</Typography></Link>
+            <Link to={RegionDex} onClick={() => history.push('/regions')}><Typography className='regionLink'>Regions</Typography></Link>
             <Typography style={{ marginLeft: '1em' }}>Pokemon App</Typography>
           </div>
         </Toolbar>
