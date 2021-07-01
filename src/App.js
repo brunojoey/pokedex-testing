@@ -7,7 +7,6 @@ import RegionDex from './pages/RegionDex';
 import { Route, Switch } from 'react-router-dom';
 
 const App = (props) => {
-  const { history } = props;
 
   return (
     <Switch>

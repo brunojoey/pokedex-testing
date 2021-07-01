@@ -22,7 +22,7 @@ const Pokemon = (props) => {
       .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
       .then(function (response) {
         const { data } = response;
-        console.log('hello', data);
+        console.log('Response From API', data);
         setPokemon(data);
       })
       .catch(function (error) {
