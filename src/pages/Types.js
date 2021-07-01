@@ -148,7 +148,7 @@ function Types(props) {
                 float: "right",
               }}
               // variant="contained"
-              onClick={() => history.push("/pokedex-testing/")}
+              onClick={() => history.push("/")}
             >
               Back to Pokedex
             </Button>

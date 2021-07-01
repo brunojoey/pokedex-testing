@@ -85,7 +85,7 @@ const RegionPage = (props) => {
                 <Card
                   className='pokemonCard-region'
                   onClick={() =>
-                    history.push(`/pokedex-testing/pokemon/${pokemon.id}`)
+                    history.push(`/pokemon/${pokemon.id}`)
                   }
                 >
                   <CardMedia

@@ -10,10 +10,10 @@ const App = (props) => {
 
   return (
     <Switch>
-      <Route exact path='/pokedex-testing/' component={Pokedex} />
-      <Route exact path='/pokedex-testing/regions' render={(props) => <RegionDex {...props} />} />
-      <Route exact path='/pokedex-testing/regions/:regionId' render={(props) => <RegionPage {...props} />} />
-      <Route exact path='/pokedex-testing/pokemon/:pokemonId' render={(props) => <Pokemon {...props}/>} />
+      <Route exact path='/' component={Pokedex} />
+      <Route exact path='/regions' render={(props) => <RegionDex {...props} />} />
+      <Route exact path='/regions/:regionId' render={(props) => <RegionPage {...props} />} />
+      <Route exact path='/pokemon/:pokemonId' render={(props) => <Pokemon {...props}/>} />
     </Switch>
   );
 };

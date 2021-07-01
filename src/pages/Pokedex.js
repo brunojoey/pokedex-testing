@@ -108,7 +108,7 @@ const Pokedex = (props) => {
 
     return (
       <Grid item xs={12} sm={4} key={pokemonId}>
-        <Card className='pokemonCard' onClick={() => history.push(`/pokedex-testing/pokemon/${id}`)}>
+        <Card className='pokemonCard' onClick={() => history.push(`/pokemon/${id}`)}>
           <CardMedia
             className={classes.cardMedia}
             image={(sprite)}
@@ -134,7 +134,7 @@ const Pokedex = (props) => {
             />
           </div>
           <div className={classes.rightSideHeader}>
-            <Link to={RegionDex} onClick={() => history.push('/pokedex-testing/regions/')}><Typography className='regionLink'>Regions</Typography></Link>
+            <Link to={RegionDex} onClick={() => history.push('/regions/')}><Typography className='regionLink'>Regions</Typography></Link>
             <Typography style={{ marginLeft: '1em' }}>Pokemon App</Typography>
           </div>
         </Toolbar>
