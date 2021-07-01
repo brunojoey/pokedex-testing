@@ -1,7 +1,6 @@
 {
   "name": "pokedex-joey",
   "version": "0.1.0",
-  "homepage": "https://joey-pokedex.herokuapp.com/",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
