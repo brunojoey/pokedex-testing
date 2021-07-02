@@ -3,48 +3,48 @@
     "region_name": "Kanto",
     "image": "../images/kanto.png",
     "link": "/regions/1",
-    "region_ID": 1
+    "regionId": 1
   },
   {
     "region_name": "Johto",
     "image": "../images/johto.png",
     "link": "/regions/2",
-    "region_ID": 2
+    "regionId": 2
   },
   {
     "region_name": "Hoenn",
     "image": "../images/hoenn.jpg",
     "link": "/regions/3",
-    "region_ID": 3
+    "regionId": 3
   },
   {
     "region_name": "Sinnoh",
     "image": "../images/sinnoh.jpg",
     "link": "/regions/4",
-    "region_ID": 4
+    "regionId": 4
   },
   {
     "region_name": "Unova",
     "image": "../images/unova.jpg",
     "link": "/regions/5",
-    "region_ID": 5
+    "regionId": 5
   },
   {
     "region_name": "Kalos",
     "image": "../images/kalos.jpg",
     "link": "/regions/6",
-    "region_ID": 6
+    "regionId": 6
   },
   {
     "region_name": "Alola",
     "image": "../images/alola.png",
     "link": "/regions/7",
-    "region_ID": 7
+    "regionId": 7
   },
   {
     "region_name": "Galar",
     "image": "../images/galar.jpg",
     "link": "/regions/8",
-    "region_ID": 8
+    "regionId": 8
   }
 ]
