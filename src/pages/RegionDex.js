@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardMedia, CardContent, Grid, Link } from "@material-ui/core";
+// import { Link } from 'react-router-dom';
 import regionJSON from "../utils/region.json";
 import "./styles.css";
 
@@ -24,7 +25,7 @@ const RegionDex = (props) => {
                     className="region-image"
                     src={region.image}
                     alt={region.region_name}
-                  ></img>
+                  />
                   <Link
                     to={region.link}
                     className="region-button"
@@ -33,11 +34,7 @@ const RegionDex = (props) => {
                       textDecoration: "none",
                       margin: "0 1em 1em 0",
                     }}
-                    onClick={() =>
-                      history.push(
-                        `/regions/${region.regionId}`
-                      )
-                    }
+                    onClick={() => history.push(`/regions/${region.region_ID}`)}
                   >
                     Pokemon from this Region
                   </Link>

@@ -46,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Pokedex = (props) => {
-  console.log('props', props)
   const classes = useStyles();
   const { history } = props;
   const [pokemonData, setPokemonData] = useState({});
@@ -85,7 +84,6 @@ const Pokedex = (props) => {
       .then(function (response) {
         const { data } = response;
         const { results } = data;
-        console.log("Response From API", results)
         const newPokemonData = {};
         // will push the information from the results object into newPokemonData with each id, name, and sprite for all.
         results.forEach((pokemon, index) => {
@@ -98,7 +96,6 @@ const Pokedex = (props) => {
           };
         });
         setPokemonData(newPokemonData);
-        console.log('Pokemon Data', newPokemonData);
       });
   }, []);
 
@@ -134,7 +131,7 @@ const Pokedex = (props) => {
             />
           </div>
           <div className={classes.rightSideHeader}>
-            <Link to={RegionDex} onClick={() => history.push('/regions')}><Typography className='regionLink'>Regions</Typography></Link>
+            <Link href={RegionDex}><Typography className='regionLink'>Regions</Typography></Link>
             <Typography style={{ marginLeft: '1em' }}>Pokemon App</Typography>
           </div>
         </Toolbar>

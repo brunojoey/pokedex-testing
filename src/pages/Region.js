@@ -37,7 +37,6 @@ const RegionPage = (props) => {
       .get(`https://pokeapi.co/api/v2/generation/${regionId}/`)
       .then(function (response) {
         const { data } = response;
-        console.log("Response From API", data);
         let pokemonListRaw = response.data.pokemon_species;
         // add id property to the pokémon for sorting purpose
         pokemonListRaw.forEach((element) => {
@@ -54,9 +53,7 @@ const RegionPage = (props) => {
           return a.id > b.id ? 1 : -1;
         });
         setPokemonData(pokemonListRaw);
-        console.log("pokemon data new", pokemonListRaw);
         setRegionData(data);
-        console.log("Final Set Data", data);
       })
       .catch(function (error) {
         setRegionData("Error", error);
@@ -66,7 +63,6 @@ const RegionPage = (props) => {
   const getRegionCard = (regionId) => {
     const { main_region } = regionId;
     const { id, name, sprite } = pokemonData;
-    console.log("Data For Each Pokemon Card", pokemonData);
 
     return (
       <div>
@@ -83,6 +79,7 @@ const RegionPage = (props) => {
             >
               <Grid className="pokemonList-region">
                 <Card
+                  key={pokemon.id}
                   className='pokemonCard-region'
                   onClick={() =>
                     history.push(`/pokemon/${pokemon.id}`)

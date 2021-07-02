@@ -22,11 +22,9 @@ const Pokemon = (props) => {
       .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
       .then(function (response) {
         const { data } = response;
-        console.log('Response From API', data);
         setPokemon(data);
       })
       .catch(function (error) {
-        console.log("ERROR", error);
         setPokemon(false);
       });
   }, [pokemonId]);
@@ -68,7 +66,6 @@ const Pokemon = (props) => {
           {types.map((typeInfo) => {
             const { type } = typeInfo;
             const { name } = type;
-            console.log("NameType", type);
             return (
               <Grid container spacing={3} style={{justifyContent: 'center', marginTop: '.1em', marginBottom: '.1em'}}>
                 <Grid item xs={8} lg={8} className='cardTypeContainer'>
