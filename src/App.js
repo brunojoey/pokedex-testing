@@ -4,7 +4,7 @@ import Pokemon from './pages/Pokemon';
 import RegionPage from './pages/Region';
 import RegionDex from './pages/RegionDex';
 // import Types from './pages/Types';
-import { Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const App = () => {
   return (
