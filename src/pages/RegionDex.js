@@ -35,7 +35,7 @@ const RegionDex = (props) => {
                     }}
                     onClick={() =>
                       history.push(
-                        `/regions/${region.region_ID}`
+                        `/regions/${region.regionId}`
                       )
                     }
                   >
