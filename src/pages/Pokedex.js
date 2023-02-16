@@ -80,7 +80,7 @@ const Pokedex = (props) => {
   // Used axios to get the pokemon from the API
   useEffect(() => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon?limit=893?offset=21`)
+      .get(`https://pokeapi.co/api/v2/pokemon?limit=1278?offset=21`)
       .then(function (response) {
         const { data } = response;
         const { results } = data;
