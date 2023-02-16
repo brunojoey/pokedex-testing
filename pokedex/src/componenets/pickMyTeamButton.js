@@ -1,0 +1,1 @@
+// picks six random Pokemon possibly from a generation even?
