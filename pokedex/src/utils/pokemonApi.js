@@ -1,15 +1,15 @@
 import axios from "axios";
 
 const getAllPokemon = () => {
-  return axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1278?offset=21`);
+  return axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1008?offset=21`);
 };
 
 const getPokemon = (pokemonId) => {
- return axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+ return axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
 };
 
 const getAllRegions = () => {
-  return axios.get(`https://pokeapi.co/api/v2/region/`)
+  return axios.get(`https://pokeapi.co/api/v2/region`)
 }
 
 const getRegion = (regionId) => {
