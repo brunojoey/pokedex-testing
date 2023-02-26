@@ -2,61 +2,61 @@ const regionList = [
   {
     "regionName": "Kanto",
     "image": require("../images/kanto.png"),
-    "link": "/regions/kanto",
+    "link": "/regions/1",
     "regionId": 1
   },
   {
     "regionName": "Johto",
     "image": require("../images/johto.png"),
-    "link": "/regions/johto",
+    "link": "/regions/2",
     "regionId": 2
   },
   {
     "regionName": "Hoenn",
     "image": require("../images/hoenn.jpg"),
-    "link": "/regions/hoenn",
+    "link": "/regions/3",
     "regionId": 3
   },
   {
     "regionName": "Sinnoh",
     "image": require("../images/sinnoh.jpg"),
-    "link": "/regions/sinnoh",
+    "link": "/regions/4",
     "regionId": 4
   },
   {
     "regionName": "Unova",
     "image": require("../images/unova.jpg"),
-    "link": "/regions/unova",
+    "link": "/regions/5",
     "regionId": 5
   },
   {
     "regionName": "Kalos",
     "image": require("../images/kalos.jpg"),
-    "link": "/regions/kalos",
+    "link": "/regions/6",
     "regionId": 6
   },
   {
     "regionName": "Alola",
     "image": require("../images/alola.png"),
-    "link": "/regions/alola",
+    "link": "/regions/7",
     "regionId": 7
   },
   {
     "regionName": "Galar",
     "image": require("../images/galar.jpg"),
-    "link": "/regions/galar",
+    "link": "/regions/8",
     "regionId": 8
   },
   {
     "regionName": "Hisui",
     "image": require("../images/hisui.png"),
-    "link": "/regions/hisui",
+    "link": "/regions/9",
     "regionId": 9
   },
   {
     "regionName": "Paldea",
     "image": require("../images/paldea.png"),
-    "link": "/regions/paldea",
+    "link": "/regions/10",
     "regionId": 10
   }
 ];

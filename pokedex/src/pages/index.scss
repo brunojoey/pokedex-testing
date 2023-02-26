@@ -16,27 +16,58 @@
 }
 
 .regions {
-  padding-bottom: 1em;
-  border: 2px solid #FF4236;
-
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: center;
+  // flex-wrap: wrap;
+  // width: 75%;
+  margin: 1em;
+  
   &-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &-image {
-      width: 300px;
-      margin: 1rem
+    width: 100%;
+    
+    &-content {
+      height: 25rem;
+      width: inherit;
+      border-radius: 20px;
     }
+
+    &-name {
+      margin: 1em;
+      width: 20%;
+      padding: .10em;
+      
+      & > h2 {
+        color: rgb(233, 223, 223);
+        font-weight: bold;
+        background-color: rgba(254, 69, 56);
+        border-radius: 8px;
+        padding: .10em;
+      }
+    }
+
 
     &-button {
-      background-color: #FF4236;
-      border-radius: 5px;
-      padding: 1em;
-      font-weight: bold;
       color: rgb(233, 223, 223);
+      background-color: #FF4236;
+      font-weight: bold;
       text-decoration: none;
+      border: 1px solid black;
+      border-radius: 8px;
+      padding: .5em;
+      width: 25%;
+      display: inherit;
+      justify-content: last baseline;
+      justify-items:last baseline;
+      margin-top: 1em;
+      transition: 0.3s ease;
+
+      &:hover {
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+        transform: translateY(-0.5rem) scale(1);
+      }
     }
+
 
   }
 }

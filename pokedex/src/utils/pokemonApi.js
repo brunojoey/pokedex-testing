@@ -5,7 +5,7 @@ const getAllPokemon = () => {
 };
 
 const getPokemon = (pokemonId) => {
- return axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
+ return axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
 };
 
 const getAllRegions = () => {

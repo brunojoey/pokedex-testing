@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import pokemonAPI from "../utils/pokemonAPI";
 import { toFirstCharUppercase } from "../utils/firstChar";
 import "./index.scss";
+import { useNavigate } from "react-router-dom";
 
 
-const Pokedex = (props) => {
-  // const { history } = props;
+const Pokedex = () => {
+  const navigate = useNavigate();
   const [pokedex, setPokedex] = useState({});
-  const [filter, setFilter] = useState("");
+  // const [filter, setFilter] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -46,7 +47,7 @@ const Pokedex = (props) => {
       // </Grid>
 
 
-      <div className="pokedex-card" key={pokemonId}>
+      <div className="pokedex-card" key={pokemonId} onClick={() => navigate(`/pokemon/${id}`)}>
         <img src={sprite} alt={name}/>
         <h3>{`${id}. ${toFirstCharUppercase(name)}`}</h3>
       </div>
