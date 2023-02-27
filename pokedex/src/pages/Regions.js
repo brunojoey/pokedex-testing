@@ -7,7 +7,7 @@ const Regions = () => {
 
   return (
     <>
-      <h1 >All Regions</h1>
+      <h1 style={{textAlign: "center"}}>All Regions</h1>
       {regionInfo.map((region) => {
         return (
           <div className="regions" key={region.regionId}>
@@ -17,7 +17,7 @@ const Regions = () => {
                 style={{
                   backgroundImage: `url(${region.image})`,
                   backgroundRepeat: "no-repeat",
-                  backgroundSize: "contain",
+                  backgroundSize: "100%",
                 }}
               >
                 <div className="regions-card-name">

@@ -15,7 +15,7 @@ const RegionPage = () => {
   useEffect(() => {
     async function fetchData() {
       const { data } = await pokemonAPI.getRegion(regionId);
-      console.log('data', data);
+      console.log("data", data);
       let pokemonList = data.pokemon_species;
       pokemonList.forEach((element) => {
         element.url = element.url.slice(0, -1);
@@ -32,7 +32,7 @@ const RegionPage = () => {
       setRegion(data);
     }
     fetchData();
-  }, [regionId])
+  }, [regionId]);
 
   const getRegionCard = (regionId) => {
     const { main_region } = regionId;
@@ -45,25 +45,21 @@ const RegionPage = () => {
         </h1>
         <div className="regionList-container">
           {pokemon.map((pokemonData) => (
-            <div
-              key={pokemonData.name}
-            >
-                <div
-                  key={pokemonData.id}
-                  className="pokemonCard-region"
-                  onClick={() => navigate(`/pokemon/${pokemonData.id}`)}
-                >
-                  <img
-                    alt="default sprite"
-                    src={pokemonData.sprite}
-                    style={{ width: "130px", height: "130px" }}
-                  />
-                  <div>
-                    <h2>{`${pokemonData.id}. ${toFirstCharUppercase(
-                      pokemonData.name
-                    )}`}</h2>{" "}
-                  </div>
-                </div>
+            <div key={pokemonData.name}>
+              <div
+                key={pokemonData.id}
+                className="pokemonCard-region"
+                onClick={() => navigate(`/pokemon/${pokemonData.id}`)}
+              >
+                  <h3>{`${pokemonData.id}. ${toFirstCharUppercase(
+                    pokemonData.name
+                  )}`}</h3>{" "}
+                <img
+                  alt="default sprite"
+                  src={pokemonData.sprite}
+                  style={{ width: "130px", height: "130px" }}
+                />
+              </div>
             </div>
           ))}
         </div>
@@ -94,20 +90,18 @@ const RegionPage = () => {
       {region === false && <h1> Region Not Found</h1>}
       {/* 4. Show button for going back to home page. */}
       {region !== undefined && (
-        <div container>
-          <div item lg={10} xs={4}>
-            <Link
-              style={{
-                backgroundColor: "#FF4236",
-                color: "#dcdcdc",
-                float: "right",
-              }}
-              // variant="contained"
-              to="/"
-            >
-              Back to Pokedex
-            </Link>
-          </div>
+        <div>
+          <Link
+            style={{
+              backgroundColor: "#FF4236",
+              color: "#dcdcdc",
+              float: "right",
+            }}
+            // variant="contained"
+            to="/"
+          >
+            Back to Pokedex
+          </Link>
         </div>
       )}
     </div>

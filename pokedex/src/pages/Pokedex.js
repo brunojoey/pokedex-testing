@@ -48,8 +48,8 @@ const Pokedex = () => {
 
 
       <div className="pokedex-card" key={pokemonId} onClick={() => navigate(`/pokemon/${id}`)}>
-        <img src={sprite} alt={name}/>
         <h3>{`${id}. ${toFirstCharUppercase(name)}`}</h3>
+        <img src={sprite} alt={name}/>
       </div>
     );
   }; 

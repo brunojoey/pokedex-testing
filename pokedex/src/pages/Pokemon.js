@@ -35,18 +35,17 @@ const Pokemon = () => {
 
     return (
       <>
-        <h1 className="pokeHeader">
+        <h1 className="pokemon-header">
           {`${id}.`} {toFirstCharUppercase(name)}
         </h1>
-        <div className="pokemonImage">
+        <div className="pokemon-image">
           <img src={front_default} alt="default sprite" />
           <img src={front_shiny} alt="shiny sprite" />
         </div>
-        <div className="pokemonInfoDiv">
+        <div className="pokemon-info">
           <h2>Pokemon Info</h2>
-            <h3>Abilities: </h3>
-            <p>{toFirstCharUppercase(abilities[0].ability.name)}</p>
-
+          <h3>Abilities: </h3>
+          <p>{toFirstCharUppercase(abilities[0].ability.name)}</p>
           <h3>Height: </h3> {height}
           <h3>Weight: </h3>
           {weight}
@@ -102,20 +101,18 @@ const Pokemon = () => {
 
       {/* 4. Show button for going back to home page. */}
       {pokemon !== undefined && (
-        <div container>
-          <div item lg={10} xs={4}>
-            <Link
-              style={{
-                backgroundColor: "#FF4236",
-                color: "#dcdcdc",
-                float: "right",
-              }}
-              // variant="contained"
-              to="/"
-            >
-              Back to Pokedex
-            </Link>
-          </div>
+        <div>
+          <Link
+            style={{
+              backgroundColor: "#FF4236",
+              color: "#dcdcdc",
+              float: "right",
+            }}
+            // variant="contained"
+            to="/"
+          >
+            Back to Pokedex
+          </Link>
         </div>
       )}
     </>
