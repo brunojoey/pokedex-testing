@@ -1,9 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BallTriangle } from "react-loader-spinner";
+import AbilityDesc from "../componenets/AbilityDesc";
 import { toFirstCharUppercase } from "../utils/firstChar";
 import { typeColors } from "../utils/typeColors";
 import pokemonAPI from "../utils/pokemonAPI";
+import "./index.scss";
 
 const Pokemon = () => {
   let params = useParams();
@@ -13,7 +15,6 @@ const Pokemon = () => {
   useEffect(() => {
     async function fetchData() {
       const { data } = await pokemonAPI.getPokemon(pokemonId);
-      console.log("data", data);
       setPokemon(data);
     }
     fetchData();
@@ -34,7 +35,7 @@ const Pokemon = () => {
     const { front_shiny } = sprites;
 
     return (
-      <>
+      <div className="pokemon">
         <h1 className="pokemon-header">
           {`${id}.`} {toFirstCharUppercase(name)}
         </h1>
@@ -43,20 +44,33 @@ const Pokemon = () => {
           <img src={front_shiny} alt="shiny sprite" />
         </div>
         <div className="pokemon-info">
-          <h2>Pokemon Info</h2>
+          <h2 style={{textAlign: "center"}}>Pokemon Info</h2>
           <h3>Abilities: </h3>
-          <p>{toFirstCharUppercase(abilities[0].ability.name)}</p>
-          <h3>Height: </h3> {height}
-          <h3>Weight: </h3>
-          {weight}
-          <h4>Types: </h4>
+          {abilities.map((pokemonAbility) => {
+            const { ability } = pokemonAbility;
+            const { name, url } = ability;
+
+            return (
+              <div className="pokemon-info-abilities" key={name}>
+                <h3>{toFirstCharUppercase(name)}</h3>
+                <AbilityDesc abilityName={name}/>
+              </div>
+            );
+          })}
+          <div className="pokemon-info-height">
+            <h3>Height: </h3> <p>{height}</p>
+          </div>
+          <div className="pokemon-info-weight">
+            <h3>Weight: </h3> <p>{weight}</p>
+          </div>
+          <h3>Types: </h3>
           {types.map((typeInfo) => {
             const { type } = typeInfo;
             const { name } = type;
             return (
-              <div>
+              <div className="type">
                 <div className="type-container">
-                  <Link
+                  <a
                     href={type.url}
                     key={name}
                     className="type"
@@ -65,7 +79,7 @@ const Pokemon = () => {
                     }}
                   >
                     {toFirstCharUppercase(`${name}`)}
-                  </Link>
+                  </a>
                 </div>
               </div>
             );
@@ -74,7 +88,7 @@ const Pokemon = () => {
             <strong>Locations</strong>
           </Link>
         </div>
-      </>
+      </div>
     );
   };
   return (
@@ -89,7 +103,7 @@ const Pokemon = () => {
           height={128}
           width={128}
           timeout={3000}
-          style={{ marginLeft: "40rem", marginTop: "5rem" }}
+          style={{ justifyContent: "center" }}
         />
       )}
       {/* 2. pokemon = good data, that means we've gotten info

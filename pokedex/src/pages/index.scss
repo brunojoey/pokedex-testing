@@ -29,10 +29,10 @@
 
 .regions {
   margin: 1em;
-  
+
   &-card {
     width: 100%;
-    
+
     &-content {
       height: 30rem;
       width: inherit;
@@ -42,26 +42,26 @@
     &-name {
       margin: 1em;
       width: 7%;
-      padding: .10em;
-      
+      padding: 0.1em;
+
       & > h2 {
         color: rgb(233, 223, 223);
         font-weight: bold;
         background-color: rgba(254, 69, 56);
         border-radius: 8px;
-        padding: .10em;
+        padding: 0.1em;
         text-align: center;
       }
     }
 
     &-button {
       color: rgb(233, 223, 223);
-      background-color: #FF4236;
+      background-color: #ff4236;
       font-weight: bold;
       text-decoration: none;
       border: 1px solid black;
       border-radius: 8px;
-      padding: .5em;
+      padding: 0.5em;
       width: 14%;
       text-align: center;
       display: inherit;
@@ -85,7 +85,7 @@
 .pokemonCard-region {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color:rgb(233, 223, 223);
+  background-color: rgb(233, 223, 223);
   color: red;
   border: 3px solid red;
   border-radius: 5px;
@@ -110,6 +110,84 @@
     border-radius: 50%;
     background-color: rgb(230, 241, 250);
     padding: 1rem;
+  }
 }
 
+.pokemon {
+  background-color: aliceblue;
+  &-header {
+    text-align: center;
+  }
+
+  &-info {
+    padding: 1rem;
+
+    &-weight {
+      display: flex;
+      align-items: center;
+
+      & > p {
+        margin: .5rem;
+      }
+
+    }
+
+    &-height {
+      display: flex;
+      align-items: center;
+
+      & > p {
+        margin: .5rem;
+      }
+    }
+
+    &-abilities {
+      display: block;
+
+      & > a {
+        padding: .5rem;
+        border: 1px solid red;
+        border-radius: 3px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &-image {
+    display: flex;
+    justify-content: center;
+    justify-items: stretch;
+
+    & > img {
+      border: 2px solid red;
+      border-radius: 50%;
+      background-color: rgb(230, 241, 250);
+      padding: 1rem;
+      margin: 1rem;
+    }
+  }
+}
+
+.type {
+  display: inline-block;
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  
+    & > a {
+      border: 1px solid red;
+      border-radius: 3px;
+      color: white;
+      text-align: center;
+      padding: .5rem;
+      margin: .5rem;
+    }
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
 }

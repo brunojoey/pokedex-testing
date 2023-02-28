@@ -8,9 +8,13 @@ const getPokemon = (pokemonId) => {
  return axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
 };
 
+const getAbility = (abilityName) => {
+  return axios.get(`https://pokeapi.co/api/v2/ability/${abilityName}`)
+};
+
 const getAllRegions = () => {
   return axios.get(`https://pokeapi.co/api/v2/region`)
-}
+};
 
 const getRegion = (regionId) => {
   return axios.get(`https://pokeapi.co/api/v2/generation/${regionId}`);
@@ -24,6 +28,6 @@ const getType = (typeId) => {
   return axios.get(`https://pokeapi.co/api/v2/type/${typeId}`)
 }
 
-const pokemonExports = {getAllPokemon, getPokemon, getAllRegions, getRegion, getAllTypes, getType}
+const pokemonExports = {getAllPokemon, getPokemon, getAbility, getAllRegions, getRegion, getAllTypes, getType}
 
 export default pokemonExports;
