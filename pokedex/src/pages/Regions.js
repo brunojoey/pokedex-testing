@@ -7,7 +7,7 @@ const Regions = () => {
 
   return (
     <>
-      <h1 style={{textAlign: "center"}}>All Regions</h1>
+      <h1 style={{ textAlign: "center" }}>All Regions</h1>
       {regionInfo.map((region) => {
         return (
           <div className="regions" key={region.regionId}>
@@ -29,13 +29,13 @@ const Regions = () => {
                 alt={region.regionName}
               /> */}
               </div>
-                <a
-                  href={region.link}
-                  className="regions-card-button"
-                  onClick={() => navigate(`/regions/${region.regionId}`)}
-                >
-                  {`Pokemon from ${region.regionName}`}
-                </a>
+              <a
+                href={region.link}
+                className="regions-card-button"
+                onClick={() => navigate(`/regions/${region.regionId}`)}
+              >
+                {`Pokemon from ${region.regionName}`}
+              </a>
             </div>
           </div>
         );

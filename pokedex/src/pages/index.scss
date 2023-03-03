@@ -11,6 +11,13 @@
     margin: 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    transition: 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+      transform: translateY(-0.5rem) scale(1);
+    }
 
     & > h3 {
       display: flex;
@@ -115,21 +122,27 @@
 
 .pokemon {
   background-color: aliceblue;
+
   &-header {
     text-align: center;
+    margin: 0;
+    padding: 1rem;
   }
 
   &-info {
     padding: 1rem;
+
+    & > h3 {
+      margin: 0;
+    }
 
     &-weight {
       display: flex;
       align-items: center;
 
       & > p {
-        margin: .5rem;
+        margin: 0.5rem;
       }
-
     }
 
     &-height {
@@ -137,7 +150,7 @@
       align-items: center;
 
       & > p {
-        margin: .5rem;
+        margin: 0.5rem;
       }
     }
 
@@ -145,7 +158,7 @@
       display: block;
 
       & > a {
-        padding: .5rem;
+        padding: 0.5rem;
         border: 1px solid red;
         border-radius: 3px;
         font-weight: bold;
@@ -175,14 +188,79 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
-  
-    & > a {
+
+    & > h3 {
       border: 1px solid red;
       border-radius: 3px;
       color: white;
       text-align: center;
-      padding: .5rem;
-      margin: .5rem;
+      padding: 0.5rem;
+      margin-right: 0.5rem;
+      transition: 0.3s ease;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+        transform: translateY(-0.5rem) scale(1);
+      }
+    }
+  }
+
+  // Types Page Styling
+  &-list {
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
+
+    & > h2 {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      color: white;
+      border: 1px solid red;
+      border-radius: 3px;
+      width: fit-content;
+      transition: 0.3s ease;
+
+      &:hover {
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+        transform: translateY(-0.5rem) scale(1);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-pokemon-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1rem;
+  }
+
+  &-pokemon-card {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: aliceblue;
+    transition: 0.3s ease;
+
+    &:hover {
+      box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+      transform: translateY(-0.5rem) scale(1);
+    }
+
+    & > img {
+      border-radius: 50%;
+      border: 1px solid;
+      margin: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    & > h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
@@ -190,4 +268,15 @@
 .loader {
   display: flex;
   justify-content: center;
+}
+
+.base-stats {
+  border: 2px solid red;
+  border-radius: 3px;
+  background-color: rgb(230, 241, 250);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 35%;
+  margin: .5rem 0 1rem 0;
+  padding-left: 1rem;
 }

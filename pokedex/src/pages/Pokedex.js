@@ -1,33 +1,30 @@
 import { useState, useEffect } from "react";
 import pokemonAPI from "../utils/pokemonAPI";
 import { toFirstCharUppercase } from "../utils/firstChar";
-import "./index.scss";
 import { useNavigate } from "react-router-dom";
-
 
 const Pokedex = () => {
   const navigate = useNavigate();
   const [pokedex, setPokedex] = useState({});
-  // const [filter, setFilter] = useState("");
 
   useEffect(() => {
     async function fetchData() {
-        const { data } = await pokemonAPI.getAllPokemon();
-        const { results } = data;
-        const newPokedex = {};
-        results.forEach((pokemon, index) => {
-          newPokedex[index + 1] = {
-            id: index + 1,
-            name: pokemon.name,
-            sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-              index + 1
-            }.png`,
-          };
-        });
-        setPokedex(newPokedex);
-      }
-      fetchData();
-    }, [pokedex]);
+      const { data } = await pokemonAPI.getAllPokemon();
+      const { results } = data;
+      const newPokedex = {};
+      results.forEach((pokemon, index) => {
+        newPokedex[index + 1] = {
+          id: index + 1,
+          name: pokemon.name,
+          sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+            index + 1
+          }.png`,
+        };
+      });
+      setPokedex(newPokedex);
+    }
+    fetchData();
+  }, [pokedex]);
 
   const getPokemonCard = (pokemonId) => {
     const { id, name, sprite } = pokedex[pokemonId];
@@ -46,28 +43,30 @@ const Pokedex = () => {
       //   </Card>
       // </Grid>
 
-
-      <div className="pokedex-card" key={pokemonId} onClick={() => navigate(`/pokemon/${id}`)}>
+      <div
+        className="pokedex-card"
+        key={pokemonId}
+        onClick={() => navigate(`/pokemon/${id}`)}
+      >
         <h3>{`${id}. ${toFirstCharUppercase(name)}`}</h3>
-        <img src={sprite} alt={name}/>
+        <img src={sprite} alt={name} />
       </div>
     );
-  }; 
+  };
 
   return (
     <>
       {pokedex ? (
         <div className="pokedex">
-          {Object.keys(pokedex).map(
-            (pokemonId) => {
-              return getPokemonCard(pokemonId);
-            }
-          )}
+          {Object.keys(pokedex).map((pokemonId) => {
+            return getPokemonCard(pokemonId);
+          })}
         </div>
-      ):
-      <h1>No Pokemon Were Found</h1>}
+      ) : (
+        <h1>No Pokemon Were Found</h1>
+      )}
     </>
-  )
+  );
 };
 
 export default Pokedex;
