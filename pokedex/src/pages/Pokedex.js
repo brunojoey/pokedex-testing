@@ -56,6 +56,7 @@ const Pokedex = () => {
 
   return (
     <>
+    <h1>Pokedex</h1>
       {pokedex ? (
         <div className="pokedex">
           {Object.keys(pokedex).map((pokemonId) => {

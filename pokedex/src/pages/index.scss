@@ -1,3 +1,8 @@
+h1 {
+  font-family: "Montesserat", "Times New Roman", serif;
+  font-size: 3rem;
+  text-align: center;
+}
 .pokedex {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -131,81 +136,55 @@
 
   &-info {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     & > h3 {
       margin: 0;
     }
 
-    &-weight {
+    &-type {
       display: flex;
-      align-items: center;
+      flex-direction: row;
 
-      & > p {
-        margin: 0.5rem;
+      &-container {
+        margin-right: .25rem;
+
+        & > h3 {
+          border: 1px solid red;
+          border-radius: 3px;
+          color: white;
+          text-align: center;
+          padding: 0.5rem;
+          margin-right: 0.5rem;
+          transition: 0.3s ease;
+
+          &:hover {
+            cursor: pointer;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+            transform: translateY(-0.5rem) scale(1);
+          }
+        }
       }
     }
 
-    &-height {
+    &-image {
       display: flex;
-      align-items: center;
+      justify-content: center;
 
-      & > p {
-        margin: 0.5rem;
-      }
-    }
-
-    &-abilities {
-      display: block;
-
-      & > a {
-        padding: 0.5rem;
-        border: 1px solid red;
-        border-radius: 3px;
-        font-weight: bold;
+      & > img {
+        border: 2px solid red;
+        border-radius: 50%;
+        background-color: rgb(230, 241, 250);
+        padding: 1rem;
+        margin: 1rem;
       }
     }
   }
 
-  &-image {
-    display: flex;
-    justify-content: center;
-    justify-items: stretch;
-
-    & > img {
-      border: 2px solid red;
-      border-radius: 50%;
-      background-color: rgb(230, 241, 250);
-      padding: 1rem;
-      margin: 1rem;
-    }
-  }
 }
-
 .type {
-  display: inline-block;
-
-  &-container {
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-
-    & > h3 {
-      border: 1px solid red;
-      border-radius: 3px;
-      color: white;
-      text-align: center;
-      padding: 0.5rem;
-      margin-right: 0.5rem;
-      transition: 0.3s ease;
-
-      &:hover {
-        cursor: pointer;
-        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
-        transform: translateY(-0.5rem) scale(1);
-      }
-    }
-  }
-
   // Types Page Styling
   &-list {
     margin: 2rem;
@@ -277,6 +256,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 35%;
-  margin: .5rem 0 1rem 0;
+  margin: 0.5rem 0 1rem 0;
   padding-left: 1rem;
 }
+
+// .abilities-stats {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+// }

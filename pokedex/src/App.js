@@ -37,9 +37,9 @@ const App = () => {
           <Route path="/types" element={<Types />} />
           <Route
             exact
-            path="/type/:typeId"
+            path="/types/:typeName"
             loader={({ params }) => {
-              console.log("params", params.typeId);
+              console.log("params", params.typeName);
             }}
             action={({ params }) => {}}
             element={<Type />}

@@ -2,13 +2,15 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BallTriangle } from "react-loader-spinner";
 import AbilityDesc from "../componenets/AbilityDesc";
+// import EvolutionSpecies from "../componenets/EvolutionSpecies";
 import { toFirstCharUppercase } from "../utils/firstChar";
-import { typeColors } from "../utils/typeColors";
+import { typeList } from "../utils/typeColors";
 import pokemonAPI from "../utils/pokemonAPI";
 import "./index.scss";
 
 const Pokemon = () => {
   const [pokemon, setPokemon] = useState(undefined);
+  const [typePokemon, setTypePokemon] = useState(undefined);
   let params = useParams();
   const { pokemonId } = params;
   let navigate = useNavigate();
@@ -16,8 +18,17 @@ const Pokemon = () => {
   useEffect(() => {
     async function fetchData() {
       const { data } = await pokemonAPI.getPokemon(pokemonId);
-      console.log("data", data);
+      let typeList = data.types;
+      typeList.forEach((element) => {
+        element.name = element.type.name
+        element.url = element.type.url.slice(0, -1);
+        element.id = parseInt(
+          element.url.substring(element.url.lastIndexOf("/") + 1)
+        );
+      });
+      setTypePokemon(typeList);
       setPokemon(data);
+
     }
     fetchData();
   }, [pokemonId]);
@@ -27,45 +38,44 @@ const Pokemon = () => {
       name,
       id,
       abilities,
-      types,
       sprites,
       stats,
     } = pokemon;
-    const { front_default } = sprites;
-    const { front_shiny } = sprites;
+    const { front_default, front_shiny } = sprites;
 
     return (
       <div className="pokemon" key={name}>
         <h1 className="pokemon-header">
           {`${id}.`} {toFirstCharUppercase(name)}
         </h1>
-        <div className="pokemon-image" key={name}>
-          <img src={front_default} alt="default sprite" />
-          <img src={front_shiny} alt="shiny sprite" />
+        <div className="pokemon-info-image" key={name}>
+          <img src={front_default} alt="default sprite of Pokemon" />
+          <img src={front_shiny} alt="shiny sprite of Pokemon" />
         </div>
-        <div className="pokemon-info">
-          <h2 style={{ textAlign: "center" }}>Pokemon Info</h2>
+        <div className="pokemon-info" key={id}>
           <h3>Types: </h3>
-          {types.map((typeInfo) => {
-            const { type } = typeInfo;
-            const { name } = type;
+          <div className="pokemon-info-type" key={name}>
+          {typePokemon.map((typeInfo) => {
+            const { name, id } = typeInfo;
             return (
-              <div className="type">
-                <div className="type-container">
+                <div className="pokemon-info-type-container">
                   <h3
-                    onClick={() => navigate(`/type/${name}`)}
+                    onClick={() => navigate(`/types/${name}`)}
                     key={name}
-                    className="type"
+                    className="pokemon-info-type"
                     style={{
-                      backgroundColor: typeColors[type.name],
+                      backgroundColor: typeList[id - 1].color,
                     }}
                   >
+                  <img src={typeList[id - 1].icon} alt="type icon" width="25px"/>
                     {toFirstCharUppercase(`${name}`)}
                   </h3>
                 </div>
-              </div>
             );
           })}
+          </div>
+          <div className="abilities-stats">
+
           <h3>Abilities: </h3>
           {abilities.map((pokemonAbility) => {
             const { ability } = pokemonAbility;
@@ -78,20 +88,22 @@ const Pokemon = () => {
               </div>
             );
           })}
-            <h3>Base Stats: </h3>
+          <h3>Base Stats: </h3>
           <div className="base-stats">
             {stats.map((pokemonStats) => {
               const { stat } = pokemonStats;
               const { name } = stat;
 
               return (
-                <div className="pokemon-info-stats" key={name}>
+                <div className="pokemon-info-stats" key={stat}>
                   <h3>{toFirstCharUppercase(name)}</h3>
                   <p>{pokemonStats.base_stat}</p>
                 </div>
               );
             })}
           </div>
+          </div>
+          {/* <EvolutionSpecies name={name}/> */}
         </div>
       </div>
     );
@@ -101,15 +113,16 @@ const Pokemon = () => {
       {/* 1. pokemon = undefined, that means we are getting the info
           -> return loading progress */}
       {pokemon === undefined && (
-        <BallTriangle
-          className="loader"
-          type="Circles"
-          color="#FF4236"
-          height={128}
-          width={128}
-          timeout={3000}
-          style={{ justifyContent: "center" }}
-        />
+        <div className="loader">
+          <BallTriangle
+            type="Circles"
+            color="#FF4236"
+            height={128}
+            width={128}
+            timeout={3000}
+            style={{ justifyContent: "center" }}
+          />
+        </div>
       )}
       {/* 2. pokemon = good data, that means we've gotten info
           -> return pokemon info */}

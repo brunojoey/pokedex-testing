@@ -7,12 +7,12 @@ import { typeColors } from "../utils/typeColors";
 const Type = () => {
   const [typePokemon, setTypePokemon] = useState([]);
   let params = useParams();
-  const { typeId } = params;
+  const { typeName } = params;
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await pokemonAPI.getType(typeId);
+      const { data } = await pokemonAPI.getType(typeName);
       const { pokemon } = data;
       let pokemonList = pokemon;
       pokemonList.forEach((element) => {
@@ -39,8 +39,8 @@ const Type = () => {
       <div
         key={pokemon.pokemon.name}
         style={{
-          border: `3px solid ${typeColors[typeId]}`,
-          borderColor: typeColors[typeId],
+          border: `3px solid ${typeColors[typeName]}`,
+          borderColor: typeColors[typeName],
         }}
         className="type-pokemon-card"
         onClick={() => navigate(`/pokemon/${pokemon.id}`)}
@@ -48,9 +48,9 @@ const Type = () => {
         <img
           src={pokemon.sprite}
           alt={pokemon.pokemon.name}
-          style={{ borderColor: typeColors[typeId] }}
+          style={{ borderColor: typeColors[typeName] }}
         />
-        <h3 style={{ color: typeColors[typeId] }}>
+        <h3 style={{ color: typeColors[typeName] }}>
           {toFirstCharUppercase(pokemon.pokemon.name)}
         </h3>
       </div>
@@ -63,10 +63,10 @@ const Type = () => {
         style={{
           fontSize: "3rem",
           textAlign: "center",
-          color: typeColors[typeId],
+          color: typeColors[typeName],
         }}
       >
-        {toFirstCharUppercase(typeId)} Type Pokemon
+        {toFirstCharUppercase(typeName)} Type Pokemon
       </h1>
       <div className="type-pokemon-list">
         {generateTypePokemon(typePokemon)}

@@ -35,16 +35,12 @@ const RegionPage = () => {
   }, [regionId]);
 
   const getRegionCard = (regionId) => {
-    console.log("region", regionId);
-    const { main_region } = regionId;
+    const { name } = regionId;
 
     return (
       <div>
         <h1 className="region-header" style={{ textAlign: "center" }}>
-          {`${toFirstCharUppercase(main_region.name)}`}'s Pokemon
-        </h1>
-        <h1 className="region-header" style={{ textAlign: "center" }}>
-          Generation IX's Pokemon
+          {`${toFirstCharUppercase(name)}`}'s Pokemon
         </h1>
         <div className="regionList-container">
           {pokemon.map((pokemonData) => (
