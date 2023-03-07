@@ -1,17 +1,17 @@
 h1 {
-  font-family: "Montesserat", "Times New Roman", serif;
+  font-family: "EB Garamond", "Montesserat", "Times New Roman", serif;
   font-size: 3rem;
   text-align: center;
 }
 .pokedex {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  background-color: aliceblue;
 
   &-card {
-    border: 3px solid red;
+    background-color: rgb(233, 223, 223);
+    color: #ff4236;
+    border: 3px solid #ff4236;
     border-radius: 5px;
-    background-color: rgb(190, 224, 240);
     padding: 1rem;
     margin: 1rem;
     display: grid;
@@ -31,8 +31,8 @@ h1 {
 
     & > img {
       display: flex;
-      justify-self: end;
-      border: 2px solid red;
+      justify-self: start;
+      border: 2px solid #ff4236;
       border-radius: 50%;
       background-color: rgb(230, 241, 250);
     }
@@ -41,44 +41,42 @@ h1 {
 
 .regions {
   margin: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 
   &-card {
-    width: 100%;
+    // width: 100%;
 
-    &-content {
-      height: 30rem;
-      width: inherit;
-      border-radius: 20px;
-    }
+        &-name {
+          // margin: 1em;
+          padding: 0.1em;
 
-    &-name {
-      margin: 1em;
-      width: 7%;
-      padding: 0.1em;
-
-      & > h2 {
-        color: rgb(233, 223, 223);
-        font-weight: bold;
-        background-color: rgba(254, 69, 56);
-        border-radius: 8px;
-        padding: 0.1em;
-        text-align: center;
-      }
-    }
+          & > h2 {
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 0.1em;
+            text-align: center;
+          }
+          & > h3 {
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 0.1em;
+            text-align: center;
+          }
+        }
 
     &-button {
-      color: rgb(233, 223, 223);
-      background-color: #ff4236;
+      color: #ff4236;
+      border: 2px solid #ff4236;
+      background-color: #eaeaea;
       font-weight: bold;
       text-decoration: none;
-      border: 1px solid black;
       border-radius: 8px;
-      padding: 0.5em;
-      width: 14%;
+      padding: 0.75em;
+      margin: 0 1rem 0 1rem;
       text-align: center;
-      display: inherit;
-      justify-content: last baseline;
-      margin-top: 1em;
+      display: flex;
+      justify-content: center;
       transition: 0.3s ease;
 
       &:hover {
@@ -98,8 +96,8 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: rgb(233, 223, 223);
-  color: red;
-  border: 3px solid red;
+  color: #ff4236;
+  border: 3px solid #ff4236;
   border-radius: 5px;
   padding: 1rem;
   margin: 1rem;
@@ -118,7 +116,7 @@ h1 {
   & > img {
     display: flex;
     justify-self: end;
-    border: 2px solid red;
+    border: 2px solid #ff4236;
     border-radius: 50%;
     background-color: rgb(230, 241, 250);
     padding: 1rem;
@@ -126,8 +124,6 @@ h1 {
 }
 
 .pokemon {
-  background-color: aliceblue;
-
   &-header {
     text-align: center;
     margin: 0;
@@ -149,10 +145,10 @@ h1 {
       flex-direction: row;
 
       &-container {
-        margin-right: .25rem;
+        margin-right: 0.25rem;
 
         & > h3 {
-          border: 1px solid red;
+          border: 1px solid #ff4236;
           border-radius: 3px;
           color: white;
           text-align: center;
@@ -169,12 +165,21 @@ h1 {
       }
     }
 
+    &-stats {
+      & > p {
+        background-color: #ff4236;
+        color: #dcdcdc;
+        text-align: center;
+        border-radius: 3px;
+      }
+    }
+
     &-image {
       display: flex;
       justify-content: center;
 
       & > img {
-        border: 2px solid red;
+        border: 2px solid #ff4236;
         border-radius: 50%;
         background-color: rgb(230, 241, 250);
         padding: 1rem;
@@ -182,7 +187,6 @@ h1 {
       }
     }
   }
-
 }
 .type {
   // Types Page Styling
@@ -198,7 +202,7 @@ h1 {
       padding: 0.5rem;
       margin: 0.5rem;
       color: white;
-      border: 1px solid red;
+      border: 1px solid #ff4236;
       border-radius: 3px;
       width: fit-content;
       transition: 0.3s ease;
@@ -223,6 +227,7 @@ h1 {
     grid-template-columns: 1fr 1fr;
     background-color: aliceblue;
     transition: 0.3s ease;
+    background-color: rgb(233, 223, 223);
 
     &:hover {
       box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
@@ -231,9 +236,10 @@ h1 {
 
     & > img {
       border-radius: 50%;
-      border: 1px solid;
+      border: 2px solid;
       margin: 0.5rem;
       padding: 0.5rem;
+      background-color: rgb(230, 241, 250);
     }
 
     & > h3 {
@@ -250,7 +256,7 @@ h1 {
 }
 
 .base-stats {
-  border: 2px solid red;
+  border: 2px solid #ff4236;
   border-radius: 3px;
   background-color: rgb(230, 241, 250);
   display: grid;
@@ -264,3 +270,19 @@ h1 {
 //   display: grid;
 //   grid-template-columns: 1fr 1fr;
 // }
+
+.back-home {
+  background-color: #ff4236;
+  color: #dcdcdc;
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 3px;
+  width: 20%;
+  text-align: center;
+  transition: .3s ease;
+
+  &:hover {
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-0.5rem) scale(1);
+  }
+}

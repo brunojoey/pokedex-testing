@@ -5,7 +5,7 @@ const Header = () => {
     <div className="header">
       <a href="/">Pokedex</a>
       <a href="/types">Types</a>
-      <a href="/regions">Regions</a>
+      <a href="/generations">Generations</a>
     </div>
   );
 };

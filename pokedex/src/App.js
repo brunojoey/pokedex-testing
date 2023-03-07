@@ -24,10 +24,10 @@ const App = () => {
             action={({ params }) => {}}
             element={<Pokemon />}
           />
-          <Route path="/regions" element={<Regions />} />
+          <Route path="/generations" element={<Regions />} />
           <Route
             exact
-            path="/regions/:regionId"
+            path="/generations/:regionId"
             loader={({ params }) => {
               console.log("params", params.regionId);
             }}

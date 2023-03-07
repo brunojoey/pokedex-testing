@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { BallTriangle } from "react-loader-spinner";
 import { toFirstCharUppercase } from "../utils/firstChar";
 import pokemonAPI from "../utils/pokemonAPI";
@@ -89,18 +89,16 @@ const RegionPage = () => {
       {region === false && <h1> Region Not Found</h1>}
       {/* 4. Show button for going back to home page. */}
       {region !== undefined && (
-        <div>
-          <Link
+        <div className="back-home">
+          <a
             style={{
-              backgroundColor: "#FF4236",
-              color: "#dcdcdc",
-              float: "right",
+              color: "#eaeaea",
             }}
             // variant="contained"
-            to="/"
+            href="/"
           >
             Back to Pokedex
-          </Link>
+          </a>
         </div>
       )}
     </div>

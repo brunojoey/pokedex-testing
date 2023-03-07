@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BallTriangle } from "react-loader-spinner";
 import AbilityDesc from "../componenets/AbilityDesc";
@@ -20,7 +20,7 @@ const Pokemon = () => {
       const { data } = await pokemonAPI.getPokemon(pokemonId);
       let typeList = data.types;
       typeList.forEach((element) => {
-        element.name = element.type.name
+        element.name = element.type.name;
         element.url = element.type.url.slice(0, -1);
         element.id = parseInt(
           element.url.substring(element.url.lastIndexOf("/") + 1)
@@ -28,19 +28,12 @@ const Pokemon = () => {
       });
       setTypePokemon(typeList);
       setPokemon(data);
-
     }
     fetchData();
   }, [pokemonId]);
 
   const generatePokemonCard = (pokemon) => {
-    const {
-      name,
-      id,
-      abilities,
-      sprites,
-      stats,
-    } = pokemon;
+    const { name, id, abilities, sprites, stats } = pokemon;
     const { front_default, front_shiny } = sprites;
 
     return (
@@ -55,9 +48,9 @@ const Pokemon = () => {
         <div className="pokemon-info" key={id}>
           <h3>Types: </h3>
           <div className="pokemon-info-type" key={name}>
-          {typePokemon.map((typeInfo) => {
-            const { name, id } = typeInfo;
-            return (
+            {typePokemon.map((typeInfo) => {
+              const { name, id } = typeInfo;
+              return (
                 <div className="pokemon-info-type-container">
                   <h3
                     onClick={() => navigate(`/types/${name}`)}
@@ -67,41 +60,50 @@ const Pokemon = () => {
                       backgroundColor: typeList[id - 1].color,
                     }}
                   >
-                  <img src={typeList[id - 1].icon} alt="type icon" width="25px"/>
+                    <img
+                      src={typeList[id - 1].icon}
+                      alt="type icon"
+                      width="25px"
+                    />
                     {toFirstCharUppercase(`${name}`)}
                   </h3>
-                </div>
-            );
-          })}
-          </div>
-          <div className="abilities-stats">
-
-          <h3>Abilities: </h3>
-          {abilities.map((pokemonAbility) => {
-            const { ability } = pokemonAbility;
-            const { name } = ability;
-
-            return (
-              <div className="pokemon-info-abilities" key={name}>
-                <h4>{toFirstCharUppercase(name)}</h4>
-                <AbilityDesc abilityName={name} />
-              </div>
-            );
-          })}
-          <h3>Base Stats: </h3>
-          <div className="base-stats">
-            {stats.map((pokemonStats) => {
-              const { stat } = pokemonStats;
-              const { name } = stat;
-
-              return (
-                <div className="pokemon-info-stats" key={stat}>
-                  <h3>{toFirstCharUppercase(name)}</h3>
-                  <p>{pokemonStats.base_stat}</p>
                 </div>
               );
             })}
           </div>
+          <div className="abilities-stats">
+            <h3>Abilities: </h3>
+            {abilities.map((pokemonAbility) => {
+              const { ability } = pokemonAbility;
+              const { name } = ability;
+
+              return (
+                <div className="pokemon-info-abilities" key={name}>
+                  <h4>{toFirstCharUppercase(name)}</h4>
+                  <AbilityDesc abilityName={name} />
+                </div>
+              );
+            })}
+            <h3>Base Stats: </h3>
+            <div className="base-stats">
+              {stats.map((pokemonStats) => {
+                const { stat } = pokemonStats;
+                const { name } = stat;
+
+                return (
+                  <div className="pokemon-info-stats" key={stat}>
+                    <h3>{toFirstCharUppercase(name)}</h3>
+                    <p
+                      style={{
+                        width: `${pokemonStats.base_stat}px`,
+                      }}
+                    >
+                      {pokemonStats.base_stat}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
           {/* <EvolutionSpecies name={name}/> */}
         </div>
@@ -133,18 +135,16 @@ const Pokemon = () => {
 
       {/* 4. Show button for going back to home page. */}
       {pokemon !== undefined && (
-        <div>
-          <Link
+        <div className="back-home">
+          <a
             style={{
-              backgroundColor: "#FF4236",
-              color: "#dcdcdc",
-              float: "right",
+              color: "#eaeaea",
             }}
             // variant="contained"
-            to="/"
+            href="/"
           >
             Back to Pokedex
-          </Link>
+          </a>
         </div>
       )}
     </>

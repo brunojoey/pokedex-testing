@@ -62,7 +62,7 @@ export const typeList = [
 },
 {
   "name": "steel",
-  "color": "#B7B7CE",
+  "color": "#5A8EA1",
   "icon": require("../images/types/Pokemon_Type_Icon_Steel.png")
 },
 {

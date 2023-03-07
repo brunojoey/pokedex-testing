@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  font-family: "Avenir", "Arial", sans-serif;
+  font-family: "Futura", "Avenir", "Helvetica", "Helvetica Neue", "Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgb(109, 109, 109);
+  color: rgb(96, 96, 96);
+  background-color: aliceblue;
 }

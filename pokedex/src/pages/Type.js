@@ -30,6 +30,7 @@ const Type = () => {
       });
 
       setTypePokemon(pokemon);
+
     }
     fetchData();
   });
@@ -41,6 +42,7 @@ const Type = () => {
         style={{
           border: `3px solid ${typeColors[typeName]}`,
           borderColor: typeColors[typeName],
+          
         }}
         className="type-pokemon-card"
         onClick={() => navigate(`/pokemon/${pokemon.id}`)}
@@ -71,6 +73,17 @@ const Type = () => {
       <div className="type-pokemon-list">
         {generateTypePokemon(typePokemon)}
       </div>
+      <div className="back-home">
+          <a
+            style={{
+              color: "#eaeaea",
+            }}
+            // variant="contained"
+            href="/"
+          >
+            Back to Pokedex
+          </a>
+        </div>
     </div>
   );
 };
