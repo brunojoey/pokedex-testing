@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { toFirstCharUppercase } from "../utils/firstChar";
-import pokemonAPI from "../utils/pokemonAPI";
 import { typeColors } from "../utils/typeColors";
+import pokemonAPI from "../utils/pokemonAPI";
 
 const Type = () => {
   const [typePokemon, setTypePokemon] = useState([]);
+  const navigate = useNavigate();
   let params = useParams();
   const { typeName } = params;
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {

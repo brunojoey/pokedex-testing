@@ -1,19 +1,18 @@
-import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { BallTriangle } from "react-loader-spinner";
-import AbilityDesc from "../componenets/AbilityDesc";
-// import EvolutionSpecies from "../componenets/EvolutionSpecies";
 import { toFirstCharUppercase } from "../utils/firstChar";
 import { typeList } from "../utils/typeColors";
 import pokemonAPI from "../utils/pokemonAPI";
-import "./index.scss";
+import AbilityDesc from "../componenets/AbilityDesc";
+// import EvolutionSpecies from "../componenets/EvolutionSpecies";
 
 const Pokemon = () => {
   const [pokemon, setPokemon] = useState(undefined);
   const [typePokemon, setTypePokemon] = useState(undefined);
+  let navigate = useNavigate();
   let params = useParams();
   const { pokemonId } = params;
-  let navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import pokemonAPI from "../utils/pokemonAPI";
 import { typeList, typeColors } from "../utils/typeColors";
 import { toFirstCharUppercase } from "../utils/firstChar";
+import pokemonAPI from "../utils/pokemonAPI";
 
 const Types = () => {
   const [types, setTypes] = useState([]);

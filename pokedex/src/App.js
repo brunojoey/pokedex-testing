@@ -1,8 +1,8 @@
-import Pokedex from "./pages/Pokedex";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Regions from "./pages/Regions";
-import Region from "./pages/Region";
+import Pokedex from "./pages/Pokedex";
 import Pokemon from "./pages/Pokemon";
+import Generations from "./pages/Generations";
+import Generation from "./pages/Generation";
 import Types from "./pages/Types";
 import Type from "./pages/Type";
 import NotFound from "./pages/NotFound";
@@ -24,15 +24,15 @@ const App = () => {
             action={({ params }) => {}}
             element={<Pokemon />}
           />
-          <Route path="/generations" element={<Regions />} />
+          <Route path="/generations" element={<Generations />} />
           <Route
             exact
-            path="/generations/:regionId"
+            path="/generations/:generationId"
             loader={({ params }) => {
-              console.log("params", params.regionId);
+              console.log("params", params.generationId);
             }}
             action={({ params }) => {}}
-            element={<Region />}
+            element={<Generation />}
           />
           <Route path="/types" element={<Types />} />
           <Route

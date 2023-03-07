@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BallTriangle } from "react-loader-spinner";
 import { toFirstCharUppercase } from "../utils/firstChar";
 import pokemonAPI from "../utils/pokemonAPI";
 import "./index.scss";
 
-const RegionPage = () => {
+const Generation = () => {
   const [pokemon, setPokemon] = useState();
-  const [region, setRegion] = useState();
-  let params = useParams();
+  const [generation, setGeneration] = useState();
   let navigate = useNavigate();
-  const { regionId } = params;
+  let params = useParams();
+  const { generationId } = params;
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await pokemonAPI.getRegion(regionId);
-      console.log("data", data);
+      const { data } = await pokemonAPI.getRegion(generationId);
       let pokemonList = data.pokemon_species;
       pokemonList.forEach((element) => {
         element.url = element.url.slice(0, -1);
@@ -29,13 +28,13 @@ const RegionPage = () => {
         return a.id > b.id ? 1 : -1;
       });
       setPokemon(pokemonList);
-      setRegion(data);
+      setGeneration(data);
     }
     fetchData();
-  }, [regionId]);
+  }, [generationId]);
 
-  const getRegionCard = (regionId) => {
-    const { name } = regionId;
+  const getGenerationCard = (generationId) => {
+    const { name } = generationId;
 
     return (
       <div>
@@ -70,25 +69,26 @@ const RegionPage = () => {
     <div>
       {/* 1. regionData = undefined, that means we are getting the info
         -> return loading progress */}
-      {region === undefined && (
-        <BallTriangle
-          className="loader"
-          type="Circles"
-          color="#FF4236"
-          height={128}
-          width={128}
-          timeout={3000}
-          style={{ marginLeft: "40rem", marginTop: "5rem" }}
-        />
+      {generation === undefined && (
+        <div className="loader">
+          <BallTriangle
+            type="Circles"
+            color="#FF4236"
+            height={128}
+            width={128}
+            timeout={3000}
+            style={{ marginLeft: "40rem", marginTop: "5rem" }}
+          />
+        </div>
       )}
       {/* 2. regionData = good data, that means we've gotten info
         -> return pokemon info */}
-      {region !== undefined && region && getRegionCard(region)}
+      {generation !== undefined && generation && getGenerationCard(generation)}
       {/* 3. region = bad data, that means no info has been found
         -> return region not found */}
-      {region === false && <h1> Region Not Found</h1>}
+      {generation === false && <h1> Region Not Found</h1>}
       {/* 4. Show button for going back to home page. */}
-      {region !== undefined && (
+      {generation !== undefined && (
         <div className="back-home">
           <a
             style={{
@@ -105,4 +105,4 @@ const RegionPage = () => {
   );
 };
 
-export default RegionPage;
+export default Generation;

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import pokemonAPI from "../utils/pokemonAPI";
-import { toFirstCharUppercase } from "../utils/firstChar";
 import { useNavigate } from "react-router-dom";
+import { toFirstCharUppercase } from "../utils/firstChar";
+import pokemonAPI from "../utils/pokemonAPI";
 
 const Pokedex = () => {
-  const navigate = useNavigate();
   const [pokedex, setPokedex] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
