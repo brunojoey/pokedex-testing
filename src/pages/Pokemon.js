@@ -1,129 +1,153 @@
-import React, { useEffect, useState } from "react";
-import {
-  Typography,
-  Link,
-  CircularProgress,
-  Button,
-  Grid,
-} from "@material-ui/core";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { BallTriangle } from "react-loader-spinner";
 import { toFirstCharUppercase } from "../utils/firstChar";
-import typeColors from "../utils/typeColors";
-import axios from "axios";
-import "./styles.css";
+import { typeList } from "../utils/typeColors";
+import pokemonAPI from "../utils/pokemonAPI";
+import AbilityDesc from "../componenets/AbilityDesc";
+// import EvolutionSpecies from "../componenets/EvolutionSpecies";
 
-const Pokemon = (props) => {
-  const { match, history } = props;
-  const { params } = match;
-  const { pokemonId } = params;
+const Pokemon = () => {
   const [pokemon, setPokemon] = useState(undefined);
+  const [typePokemon, setTypePokemon] = useState(undefined);
+  let navigate = useNavigate();
+  let params = useParams();
+  const { pokemonId } = params;
 
   useEffect(() => {
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
-      .then(function (response) {
-        const { data } = response;
-        setPokemon(data);
-      })
-      .catch(function (error) {
-        setPokemon(false);
+    async function fetchData() {
+      const { data } = await pokemonAPI.getPokemon(pokemonId);
+      let typeList = data.types;
+      typeList.forEach((element) => {
+        element.name = element.type.name;
+        element.url = element.type.url.slice(0, -1);
+        element.id = parseInt(
+          element.url.substring(element.url.lastIndexOf("/") + 1)
+        );
       });
+      setTypePokemon(typeList);
+      setPokemon(data);
+    }
+    fetchData();
   }, [pokemonId]);
 
-  const generatePokemon = (pokemon) => {
-    const {
-      name,
-      id,
-      species,
-      height,
-      weight,
-      types,
-      sprites,
-      location_area_encounters,
-    } = pokemon;
-    const { front_default } = sprites;
-    const { front_shiny } = sprites;
+  const generatePokemonCard = (pokemon) => {
+    const { name, id, abilities, sprites, stats } = pokemon;
+    const { front_default, front_shiny } = sprites;
 
     return (
-      <>
-        <Typography variant="h3" className="pokeHeader" style={{marginBottom: '.5em'}}>
+      <div className="pokemon" key={name}>
+        <h1 className="pokemon-header">
           {`${id}.`} {toFirstCharUppercase(name)}
-        </Typography>
-        <div className="pokemonImage" style={{marginBottom: '1em', width: '50%'}}>
-          <img style={{ width: "0 auto", height: "0 auto" }} src={front_default} alt='default sprite'/>
-          <img style={{ width: "0 auto", height: "0 auto" }} src={front_shiny} alt='shiny sprite'/>
+        </h1>
+        <div className="pokemon-info-image" key={name}>
+          <img src={front_default} alt="default sprite of Pokemon" />
+          <img src={front_shiny} alt="shiny sprite of Pokemon" />
         </div>
-        <div className="pokemonInfoDiv" style={{marginBottom: '1em', width: '50%'}}>
-          <Typography variant="h5" style={{textDecoration: 'underline'}}>Pokemon Info</Typography>
-          <Typography className="pokemonUrl">
-            {"Species: "}
-            <Link href={species.url}>
-              {toFirstCharUppercase(species.name)}{" "}
-            </Link>
-          </Typography>
-          <Typography>Height: {height} </Typography>
-          <Typography>Weight: {weight} </Typography>
-          <Typography variant="h6"> Types:</Typography>
-          {types.map((typeInfo) => {
-            const { type } = typeInfo;
-            const { name } = type;
-            return (
-              <Grid container spacing={3} style={{justifyContent: 'center', marginTop: '.1em', marginBottom: '.1em'}}>
-                <Grid item xs={8} lg={8} className='cardTypeContainer'>
-                <Link
-                  href={type.url}
-                  key={name}
-                  className="cardType"
-                  style={{
-                    backgroundColor: typeColors[type.name],
-                    color: "white",
-                    width: "25%",
-                  }}
-                >
-                  {toFirstCharUppercase(`${name}`)}
-                </Link>
-                </Grid>
-              </Grid>
+        <div className="pokemon-info" key={id}>
+          <h3>Types: </h3>
+          <div className="pokemon-info-type" key={name}>
+            {typePokemon.map((typeInfo) => {
+              const { name, id } = typeInfo;
+              return (
+                <div className="pokemon-info-type-container">
+                  <h3
+                    onClick={() => navigate(`/types/${name}`)}
+                    key={name}
+                    className="pokemon-info-type"
+                    style={{
+                      backgroundColor: typeList[id - 1].color,
+                    }}
+                  >
+                    <img
+                      src={typeList[id - 1].icon}
+                      alt="type icon"
+                      width="25px"
+                    />
+                    {toFirstCharUppercase(`${name}`)}
+                  </h3>
+                </div>
+              );
+            })}
+          </div>
+          <div className="abilities-stats">
+            <h3>Abilities: </h3>
+            {abilities.map((pokemonAbility) => {
+              const { ability } = pokemonAbility;
+              const { name } = ability;
 
-            );
-          })}
-          <Link href={location_area_encounters}><strong>Locations</strong></Link>
+              return (
+                <div className="pokemon-info-abilities" key={name}>
+                  <h4>{toFirstCharUppercase(name)}</h4>
+                  <AbilityDesc abilityName={name} />
+                </div>
+              );
+            })}
+            <h3>Base Stats: </h3>
+            <div className="base-stats">
+              {stats.map((pokemonStats) => {
+                const { stat } = pokemonStats;
+                const { name } = stat;
+
+                return (
+                  <div className="pokemon-info-stats" key={stat}>
+                    <h3>{toFirstCharUppercase(name)}</h3>
+                    <p
+                      style={{
+                        width: `${pokemonStats.base_stat}px`,
+                      }}
+                    >
+                      {pokemonStats.base_stat}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          {/* <EvolutionSpecies name={name}/> */}
         </div>
-      </>
+      </div>
     );
   };
   return (
     <>
       {/* 1. pokemon = undefined, that means we are getting the info
-        -> return loading progress */}
+          -> return loading progress */}
       {pokemon === undefined && (
-        <CircularProgress style={{ alignContent: "center" }} />
+        <div className="loader">
+          <BallTriangle
+            type="Circles"
+            color="#FF4236"
+            height={128}
+            width={128}
+            timeout={3000}
+            style={{ justifyContent: "center" }}
+          />
+        </div>
       )}
       {/* 2. pokemon = good data, that means we've gotten info
-        -> return pokemon info */}
-      {pokemon !== undefined && pokemon && generatePokemon(pokemon)}
+          -> return pokemon info */}
+      {pokemon !== undefined && pokemon && generatePokemonCard(pokemon)}
       {/* 3. pokemon = bad data, that means no info has been found
-        -> return pokemon not found */}
-      {pokemon === false && <Typography> Pokemon not found</Typography>}
+          -> return pokemon not found */}
+      {pokemon === false && <h2> Pokemon Not Found</h2>}
 
       {/* 4. Show button for going back to home page. */}
       {pokemon !== undefined && (
-        <Grid container>
-          <Grid item lg={10} xs={4}>
-            <Button
-              style={{
-                backgroundColor: "#FF4236",
-                color: "#dcdcdc",
-                float: 'right'
-              }}
-              // variant="contained"
-              onClick={() => history.push("/")}
-            >
-              Back to Pokedex
-            </Button>
-          </Grid>
-        </Grid>
+        <div className="back-home">
+          <a
+            style={{
+              color: "#eaeaea",
+            }}
+            // variant="contained"
+            href="/"
+          >
+            Back to Pokedex
+          </a>
+        </div>
       )}
     </>
   );
 };
+
 export default Pokemon;
