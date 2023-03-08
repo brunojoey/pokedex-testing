@@ -1,3 +1,5 @@
+@import "../styles/mixins.scss";
+
 .header {
   background-color: #FF4236;
   display: flex;
@@ -5,11 +7,18 @@
   justify-content: space-around;
   padding: 0.5rem;
 
+  @include respond(phone) {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
   & > a {
     color: #eaeaea;
     font-weight: bold;
     transition: 0.3s ease;
     text-decoration: none;
+
 
     &:hover {
       text-decoration: underline;
