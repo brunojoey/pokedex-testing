@@ -24,6 +24,12 @@ h1 {
     width: inherit;
   }
 
+  @include respond(tab-port) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: inherit;
+  }
+
   &-card {
     background-color: rgb(233, 223, 223);
     color: #ff4236;
@@ -40,6 +46,12 @@ h1 {
       flex-direction: column;
       height: 10rem;
       width: 15rem;
+    }
+
+    @include respond(tab-port) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: inherit;
     }
 
     &:hover {
@@ -131,6 +143,12 @@ h1 {
   @include respond(phone) {
     display: flex;
     flex-direction: column;
+    width: inherit;
+  }
+
+  @include respond(tab-port) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: inherit;
   }
 }
@@ -273,18 +291,28 @@ h1 {
       display: flex;
       flex-direction: column;
     }
+
+    @include respond(tab-port) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: inherit;
+    }
   }
 
   &-pokemon-card {
     margin: 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: aliceblue;
     transition: 0.3s ease;
     background-color: rgb(233, 223, 223);
 
     @include respond (phone) {
       scale: .9 .9;
+    }
+
+    @include respond(tab-port) {
+      display: grid;
+      grid-area: auto;
     }
 
     &:hover {
@@ -354,7 +382,12 @@ h1 {
   transition: .3s ease;
 
   @include respond(phone) {
-    width: inherit
+    width: inherit;
+  }
+
+  @include respond(tab-port) {
+    display: flex;
+    justify-content: center;
   }
 
   &:hover {
