@@ -24,12 +24,6 @@ h1 {
     width: inherit;
   }
 
-  @include respond(tab-land) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: inherit;
-  }
-
   &-card {
     background-color: rgb(233, 223, 223);
     color: #ff4236;
@@ -46,6 +40,12 @@ h1 {
       flex-direction: column;
       height: 10rem;
       width: 15rem;
+    }
+
+    @include respond(tab-land) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: inherit;
     }
 
     &:hover {
