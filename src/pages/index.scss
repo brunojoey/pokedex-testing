@@ -24,7 +24,7 @@ h1 {
     width: inherit;
   }
 
-  @include respond(tab-port) {
+  @include respond(tab-land) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: inherit;
@@ -48,7 +48,7 @@ h1 {
       width: 15rem;
     }
 
-    @include respond(tab-port) {
+    @include respond(tab-land) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       width: inherit;
@@ -146,7 +146,7 @@ h1 {
     width: inherit;
   }
 
-  @include respond(tab-port) {
+  @include respond(tab-land) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: inherit;
@@ -292,7 +292,7 @@ h1 {
       flex-direction: column;
     }
 
-    @include respond(tab-port) {
+    @include respond(tab-land) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       width: inherit;
@@ -310,7 +310,7 @@ h1 {
       scale: .9 .9;
     }
 
-    @include respond(tab-port) {
+    @include respond(tab-land) {
       display: grid;
       grid-area: auto;
     }
@@ -385,7 +385,7 @@ h1 {
     width: inherit;
   }
 
-  @include respond(tab-port) {
+  @include respond(tab-land) {
     display: flex;
     justify-content: center;
   }
