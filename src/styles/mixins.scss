@@ -1,8 +1,9 @@
+
 @mixin respond($breakpoint) {
+
   @if $breakpoint == phone {
     @media only screen and (max-width: 37.5em) { @content };
     // 600px / 16 = 37.5em
-  }
   @if $breakpoint == tab-port {
     @media only screen and (max-width: 56.25em) { @content };
     // 900px / 16 = 56.25em
@@ -16,3 +17,23 @@
     // 1800px / 16 = 112.5em
   }
 }
+
+  // @if ($breakpoint == xsmall) {
+  //   @media (min-width: $breakpoint-xsmall) { @content };
+  // } @else if ($breakpoint == small) {
+  //   @media (min-width: $breakpoint-small) { @content };
+  // } @else if ($breakpoint == medium) {
+  //   @media (min-width: $breakpoint-medium) { @content };
+  // } @else if ($breakpoint == large) {
+  //   @media (min-width: $breakpoint-large) { @content };
+  // } @else if ($breakpoint == xlarge ) {
+  //   @media (min-width: $breakpoint-xlarge) { @content };
+  // } @else {
+  //   @error "Unknown Media Query Breakpoint #{$breakpoint}";
+  // }
+};
+
+
+
+
+

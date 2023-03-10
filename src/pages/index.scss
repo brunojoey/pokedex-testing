@@ -12,6 +12,13 @@ h1 {
   font-family: "EB Garamond", "Montesserat", "Times New Roman", serif;
   font-size: 3rem;
   text-align: center;
+
+  @include respond(phone) {
+    margin: 0;
+    width: 18rem;
+    display: flex;
+    align-items: center;
+  }
 }
 .pokedex {
   display: grid;
@@ -42,11 +49,11 @@ h1 {
       width: 15rem;
     }
 
-    @include respond(tab-land) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: inherit;
-    }
+    // @include respond(tab-land) {
+    //   display: grid;
+    //   grid-template-columns: 1fr 1fr;
+    //   width: inherit;
+    // }
 
     &:hover {
       cursor: pointer;
@@ -140,11 +147,11 @@ h1 {
     width: inherit;
   }
 
-  @include respond(tab-land) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: inherit;
-  }
+  // @include respond(tab-land) {
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr;
+  //   width: inherit;
+  // }
 }
 
 .pokemonCard-region {
@@ -284,13 +291,15 @@ h1 {
     @include respond(phone) {
       display: flex;
       flex-direction: column;
+      align-items: stretch;
+      width: 15rem;
     }
 
-    @include respond(tab-land) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: inherit;
-    }
+    // @include respond(tab-land) {
+    //   display: grid;
+    //   grid-template-columns: 1fr 1fr;
+    //   width: inherit;
+    // }
   }
 
   &-pokemon-card {
@@ -301,7 +310,10 @@ h1 {
     background-color: rgb(233, 223, 223);
 
     @include respond (phone) {
-      scale: .9 .9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 10rem;
     }
 
     @include respond(tab-land) {
@@ -322,7 +334,9 @@ h1 {
       background-color: rgb(230, 241, 250);
 
       @include respond(phone) {
-        // scale: .75 .75;
+        height: 5rem;
+        width: 5rem;
+        margin: .5rem;
       }
     }
 
@@ -332,7 +346,8 @@ h1 {
       align-items: center;
 
       @include respond(phone) {
-        font-size: 1rem;
+        font-size: 1.3rem;
+        margin: 0.4rem;
       }
     }
   }
