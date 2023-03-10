@@ -49,14 +49,14 @@ const Generation = () => {
                 className="pokemonCard-region"
                 onClick={() => navigate(`/pokemon/${pokemonData.id}`)}
               >
-                <h3>{`${pokemonData.id}. ${toFirstCharUppercase(
-                  pokemonData.name
-                )}`}</h3>{" "}
                 <img
                   alt="default sprite"
                   src={pokemonData.sprite}
                   style={{ width: "130px", height: "130px" }}
-                />
+                  />
+                  <h3>{`${pokemonData.id}. ${toFirstCharUppercase(
+                    pokemonData.name
+                  )}`}</h3>{" "}
               </div>
             </div>
           ))}

@@ -47,14 +47,14 @@ const Type = () => {
         className="type-pokemon-card"
         onClick={() => navigate(`/pokemon/${pokemon.id}`)}
       >
-        <h3 style={{ color: typeColors[typeName] }}>
-          {toFirstCharUppercase(pokemon.pokemon.name)}
-        </h3>
         <img
           src={pokemon.sprite}
           alt={pokemon.pokemon.name}
           style={{ borderColor: typeColors[typeName] }}
         />
+        <h3 style={{ color: typeColors[typeName] }}>
+          {toFirstCharUppercase(pokemon.pokemon.name)}
+        </h3>
       </div>
     ));
   };
